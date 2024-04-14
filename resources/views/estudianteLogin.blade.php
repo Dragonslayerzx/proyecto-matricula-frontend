@@ -21,23 +21,27 @@
           <a class="me-3" href="{{ route('estudiante.login') }}">Estudiantes</a>
           <a class="me-3" href="{{ route('docente.login') }}">Docentes</a>
           <a class="me-3" href="{{ route('empleado.login') }}">Empleados</a>
+          <a class="me-3" href="{{ route('estudiante.expediente.form') }}">registrate</a>
         </div>
       </nav>
     </head>
   </div>
-  <main class="d-flex justify-content-center align-items-center mt-2">
+  <main class="d-flex  justify-content-center align-items-center mt-2">
     <section class="me-5">
       <img src="{{ asset('img/authentication-small.png') }}" alt="autenticación logo">
     </section>
     <section class="d-flex">
-      <form action="#" class="d-flex flex-column justify-content-around p-5 form">
+      <form action="#" class="d-flex flex-column justify-content-evenly p-5 form">
         <div class="d-flex flex-column align-items-center justify-content-center">
           <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div> 
-        <input class="form-control" type="text" placeholder="Correo" name="correo">
-        <input class="form-control" type="password" placeholder="contraseña" name="contrasena">
-        <button class="btn btn-primary">Entrar</button>
+        <input class="form-control mb-3" type="text" placeholder="Correo" name="correo">
+        <input class="form-control mb-3" type="password" placeholder="contraseña" name="contrasena">
+        <button class="btn btn-primary mb-3">Entrar</button>
+        <div>
+          <h6 class="fw-light">No tienes cuenta <a href="{{ route('estudiante.expediente.form') }}">registrate</a></h6>
+        </div>
       </form> 
     </section>
   </main>

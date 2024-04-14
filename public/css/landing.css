@@ -28,8 +28,12 @@ a {
   color: #fd7e14;
 }
 
+.text-white {
+  color: #fbfcf8;
+}
+
 .form {
-  height: 450px;
+  height: auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -37,4 +41,8 @@ a {
 a:hover {
   color: #fd7e14;
   text-decoration: underline;
+}
+
+.p-8 {
+  padding: 80px;
 }

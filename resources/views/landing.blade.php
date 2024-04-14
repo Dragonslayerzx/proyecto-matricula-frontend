@@ -21,6 +21,7 @@
           <a class="me-3" href="{{ route('estudiante.login') }}">Estudiantes</a>
           <a class="me-3" href="{{ route('docente.login') }}">Docentes</a>
           <a class="me-3" href="{{ route('empleado.login') }}">Empleados</a>
+          <a class="me-3" href="{{ route('estudiante.expediente.form') }}">registrate</a>
         </div>
       </nav>
     </head>
