@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class EmpleadoController extends Controller
 {
     public function empleadoLogin() {
-        return view('empleado');
+        return view('empleadoLogin');
     }
 
     public function vistaPrincipalEmpleado() {
@@ -63,8 +63,6 @@ class EmpleadoController extends Controller
             "Valle",
             "Yoro"
         ];
-
-
 
         return view('crearDocente', compact('departamentos'));
     }
