@@ -18,8 +18,11 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <h6 class="fw-light me-3">Usuario</h6>
-          <h6 class="fw-light me-3">Correo</h6>
+          <!-- <a href="{{ route('crear.docente') }}">Crear registro docente</a> -->
+          <a class="me-4" href="{{ route('establecer.matricula') }}">Establecer matrícula</a>
+          <a class="me-4" href="{{ route('registrar.carrera') }}">Registrar carrera</a>
+          <a class="me-4" href="{{ route('registrar.edificio') }}">Registrar edificio</a>
+          <a class="me-4" href="{{ route('registrar.salon') }}">Registrar salón</a>
           <button class="btn btn-primary"><a class="me-3 text-white" href="{{ route('logout') }}">Log out</a></button>
         </div>
       </nav>
@@ -27,9 +30,9 @@
   </div>
   <main class="mt-4">
     <div>
-      <h4>Expedientes pendientes por revisar</h4>
+      <h4>Expedientes Estudiantes</h4>
     </div>
-    <div>
+    <div class="mb-5">
       <table class="table">
         <thead>
           <tr>
@@ -65,9 +68,44 @@
         </tbody>
       </table>
     </div>
-    <div class="d-flex justify-content-center mt-4">
-      <button class="btn btn-primary me-5"><a class="text-white" href="{{ route('crear.docente') }}">Crear registro docente</a></button>
-      <button class="btn btn-primary"><a class="text-white" href="{{ route('establecer.matricula') }}">Establecer matrícula</a></button>
+    <div class="d-flex flex-column justify-content-center mt-4">
+      <div>
+        <h4>Expedientes Docentes</h4>
+      </div>
+      <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Apellido</th>
+              <th scope="col">Carrera</th>
+              <th scope="col">Revisar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Carlos</td>
+              <td>Flores</td>
+              <td>Ing. Sistemas</td>
+              <td><a href="{{ route('expediente.docente.revisar') }}">Revisar</a></td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>Thornton</td>
+              <td>Ing. Industrial</td>
+              <td><a href="{{ route('expediente.docente.revisar') }}">Revisar</a></td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>Larry</td>
+              <td>McCarthy</td>
+              <td>Física</td>
+              <td><a href="{{ route('expediente.docente.revisar') }}">Revisar</a></td>
+            </tr>
+          </tbody>
+        </table>
     </div>
   </main>
 </body>

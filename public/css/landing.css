@@ -32,6 +32,7 @@ a {
   color: #fbfcf8;
 }
 
+
 .form {
   height: auto;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -45,4 +46,8 @@ a:hover {
 
 .p-8 {
   padding: 80px;
+}
+
+.h-85 {
+  height: 85%;
 }
