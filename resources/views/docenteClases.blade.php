@@ -29,37 +29,37 @@
 </div>
 
 <!-- Contenido Principal -->
-<div class="container mt-3 text-center">
-  <h1><b>Clases asignadas en el Periodo</b></h1>
+<div class="container mt-3 mb-5 text-center">
+  <h3>Clases asignadas</h3>
 </div>  
-
-<table class="table mt-4">
-  <thead>
-    <tr>
-      <th>Código</th>
-      <th>Nombre</th>
-      <th>Sección</th>
-      <th>UV</th>
-      <th>Ver Curso</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>001</td>
-      <td>Curso 1</td>
-      <td>1500</td>
-      <td>3</td>
-      <td><a href="#" class="btn btn-primary">Ver</a></td>
-    </tr>
-    <tr>
-      <td>002</td>
-      <td>Curso 2</td>
-      <td>1600</td>
-      <td>4</td>
-      <td><a href="#" class="btn btn-primary">Ver</a></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container radius">
+  <div class="row">
+    <div class="col-lg-4">
+      <div class="card mb-5 rounded" style="width: 18rem;">
+        <img src="{{ asset('img/clases.png') }}" class="card-img-top" alt="clases logo">
+        <div class="card-body">
+          <h3 class="card-title fw-light">NOMBRE DE CLASE</h3>
+          <h6>Código: <span class="fw-bold">001</span></h6>
+          <h6>Sección: <span class="fw-bold">1300</span></h6>
+          <h6>UV: <span class="fw-bold">3</span></h6>
+          <button class="btn btn-primary"><a class="text-white" href="#" class="btn btn-primary">Ver curso</a></button>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4">
+      <div class="card mb-5 rounded" style="width: 18rem;">
+        <img src="{{ asset('img/clases.png') }}" class="card-img-top" alt="clases logo">
+        <div class="card-body">
+          <h3 class="card-title fw-light">NOMBRE DE CLASE</h3>
+          <h6>Código: <span class="fw-bold">001</span></h6>
+          <h6>Sección: <span class="fw-bold">1300</span></h6>
+          <h6>UV: <span class="fw-bold">3</span></h6>
+          <button class="btn btn-primary"><a class="text-white" href="#" class="btn btn-primary">Ver curso</a></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Footer -->
 <footer class="footer mt-5 py-3">
