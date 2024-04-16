@@ -51,3 +51,7 @@ a:hover {
 .h-85 {
   height: 85%;
 }
+
+.rounded {
+  border-radius: 9px;
+}
