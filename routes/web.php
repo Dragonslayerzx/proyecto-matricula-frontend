@@ -30,3 +30,7 @@ Route::post('/expediente/mandar', [EstudianteController::class, 'mandarExpedient
 Route::get('/estudiante/formulario/enviado', [EstudianteController::class, 'formularioEnviado'])->name('formulario.enviado');
 // docente
 Route::get('/docente/login', [DocenteController::class, 'docenteLogin'])->name('docente.login');
+Route::get('/docente/home',  [DocenteController::class, 'vistaPrincipalDocente'])->name('docente.home');
+Route::get('/docente/logout',[DocenteController::class, 'logout'])->name('docente.logout');
+Route::get('/docente/clases',[DocenteController::class, 'verClases'])->name('docente.verClases');
+Route::get('/docente/perfil',[DocenteController::class, 'docentePerfil'])->name('docente.perfil');
