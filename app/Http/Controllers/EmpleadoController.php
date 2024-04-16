@@ -43,6 +43,9 @@ class EmpleadoController extends Controller
     }
 
     public function crearDocente() {
+
+        $carreras = ['psicología', 'fisica', 'pedagogía'];
+
         $departamentos = [
             "Atlántida",
             "Colón",
@@ -64,7 +67,9 @@ class EmpleadoController extends Controller
             "Yoro"
         ];
 
-        return view('crearDocente', compact('departamentos'));
+
+
+        return view('crearDocente', compact('departamentos', 'carreras'));
     }
 
     public function establecerMatricula() {
@@ -73,6 +78,34 @@ class EmpleadoController extends Controller
 
     public function logout() {
         return redirect()->route('empleado.login');
+    }
+
+    public function registrarEdificio() {
+        return view('registroEdificio');
+    }
+
+    public function registrarCarrera() {
+
+        $coordinadores = ["1", "2", "3"];
+
+        return view('registroCarrera', compact('coordinadores'));
+    }
+
+    public function registrarSalon() {
+
+        $edificios = ["b2", "1847"];
+
+        return view('registroSalon', compact('edificios'));
+    }
+
+    public function expedienteDocenteRevisar() {
+
+        $carrera = "is";
+        $departamento = "FM";
+        $sexo = "Masculino";
+        $cargo = 'D';
+
+        return view('revisarExpedienteDocente', compact('carrera', 'departamento', 'sexo', 'cargo'));
     }
 }
 
