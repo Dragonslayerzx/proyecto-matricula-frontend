@@ -27,11 +27,8 @@
     </head>
   </div>
   <main class="d-flex flex-column justify-content-center align-items-center mt-2">
-    <section class="mb-5 d-flex flex-column justify-content-center">
-      <div class="mx-auto">
-        <img src="{{ asset('img/form.gif') }}" alt="illustration">
-      </div>
-      <h3>Llena el formulario para poder crear tu <span class="text-orange">expediente</span></h3>
+    <section class="mb-5">
+      <h3>Registro de Salón</h3>
     </section>
     <section class="d-flex mb-3">
       <form action="{{ route('expediente.mandar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
@@ -41,37 +38,26 @@
           <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div> 
-        <div>
-          <label for="nombres">Nombres</label>
-          <input class="form-control mb-3" id="nombres" type="text" placeholder="Nombres" name="nombres" minlength="3" maxlength="15" required>
-          <label for="aplellidos">Apellidos</label>
-          <input class="form-control mb-3" type="text" id="apellidos" placeholder="Apellidos" name="apellidos" minlength="3" maxlength="12" required>
-          <label for="correo">Correo</label>
-          <input class="form-control mb-3" type="email" id="correo" name="correo" placeholder="Correo" required>
-          <label for="sexo">Sexo</label>
-          <select class="form-select mb-3" name="sexo" id="sexo" required>
-            <option selected>Selecciona tu sexo</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-          </select>
-          <label for="departamento">Departamento de residencia</label>
-          <select class="form-select mb-3" name="departamento" id="departamento" required>
-            <option selected>Selecciona el departamento de residencia</option>
-            @foreach ($departamentos as $departamento)
-              <option value="{{ $departamento }}">{{ $departamento }}</option> 
+        <div class="d-flex flex-column justify-content-center">
+          <label class="form-label" for="salon">Salon</label>
+          <input class="form-control mb-4" type="text" id="salon" name="nombreSalon" placeholder="Nombre del salón">
+          <label class="form-label" for="capacidad">Capacidad</label>
+          <input class="form-control mb-4" type="number" name="capacidadSalon" id="capacidad" placeholder="Capacidad del salón" min="0">
+          <label class="form-label" for="edificio">Seleccione el edificio al que pertenece</label>
+          <select class="form-select mb-5" name="edificio" id="edificio">
+            <option selected>Edificio</option>
+            @foreach ($edificios as $edificio)
+              <option value="{{ $edificio }}">{{ $edificio }}</option> 
             @endforeach
           </select>
-          <label for="carrera">Carrera</label>
-          <select class="form-select mb-3" name="carrera" id="carrera" required>
-            <option selected>Selecciona una carrera</option>
-            @foreach ($carreras as $carrera)
-              <option value="{{ $carrera }}">{{ $carrera }}</option> 
-            @endforeach
-          </select>
-         <!-- <label for="foto">Subir fotografía</label>
-          <input class="form-control mb-3" type="file" name="foto" id="foto"> -->
+          <div>
+
+          </div>
         </div>
-        <button class="btn btn-primary">Enviar</button>
+        <div class="d-flex justify-content-center align-items-center">
+          <button class="btn btn-primary me-3">Crear</button>
+          <button class="btn btn-danger">Eliminar</button>
+        </div>
       </form> 
     </section>
    <!-- <section class="ms-1">

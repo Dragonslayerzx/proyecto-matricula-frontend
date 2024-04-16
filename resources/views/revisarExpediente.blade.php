@@ -13,9 +13,16 @@
   <div>
     <head>
       <nav class="d-flex justify-content-center align-items-center">
-        <div class="d-flex flex-column justify-content-center align-items-center">
-        <h3 class="mt-3">Tuition<span class="text-orange">03</span></h3>
-          <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
+        <div class="d-flex flex-column justify-content-center align-items-center me-5">
+          <h3 class="mt-3">Tuition<span class="text-orange">03</span></h3>
+        </div>
+        <div class="d-flex align-items-center">
+          <!-- <a href="{{ route('crear.docente') }}">Crear registro docente</a> -->
+          <a class="me-4" href="{{ route('establecer.matricula') }}">Establecer matrícula</a>
+          <a class="me-4" href="{{ route('registrar.carrera') }}">Registrar carrera</a>
+          <a class="me-4" href="{{ route('registrar.edificio') }}">Registrar edificio</a>
+          <a class="me-4" href="{{ route('registrar.salon') }}">Registrar salón</a>
+          <button class="btn btn-primary"><a class="me-3 text-white" href="{{ route('logout') }}">Log out</a></button>
         </div>
        <!-- <div class="d-flex align-items-center">
           <a class="me-3" href="{{ route('estudiante.login') }}">Estudiantes</a>
@@ -28,7 +35,7 @@
   </div>
   <main class="d-flex flex-column justify-content-center align-items-center mt-2">
     <section class="mb-5">
-      <h3>Llena el formulario para poder crear tu <span class="text-orange">expediente</span></h3>
+      <h3>Expediente aplicante a estudiante</span></h3>
     </section>
     <section class="d-flex mb-3">
       <form action="{{ route('expediente.mandar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
