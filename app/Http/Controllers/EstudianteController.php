@@ -11,7 +11,7 @@ class EstudianteController extends Controller
     public function estudianteLogin() {
         return view('estudianteLogin');
     }
-
+   
     public function expedienteEstudianteForm() {
         $departamentos = [
             "Atlántida",
@@ -80,6 +80,43 @@ class EstudianteController extends Controller
 
     public function vistaPrincipalEstudiante(){
         return view('estudiante');
+    }
+
+    public function verForma03(){
+        return view('estudianteClases');
+    }
+
+    public function estudianteLogout() {
+        return redirect()->route('estudiante.login');
+    }
+
+    public function estudiantePerfil() {
+        $alumno = [
+            'cuenta' => '28372',
+            'nombre' => 'Pam',
+            'apellido' => 'Beesly',
+            'sexo' => '0',
+            'direccion' => 'La melgar',
+            'email' => 'pamcasso@gmail.com',
+            'carrera' => 'Administracion Aduanera', 
+           ];
+        return view('estudiantePerfil', compact('alumno'));
+    }
+
+    public function editarPerfil() {
+        $alumno = [
+            'cuenta' => '13113',
+            'contrasena' => 'polloshermanos'
+        ];
+        return view('estudianteClave', compact('alumno'));
+    }
+
+    public function cambiarClave(Request $request){
+       return redirect()->route('estudiante.editar.perfil');
+    }
+
+    public function verHistorial(){
+        return view('estudianteHistorial');
     }
 }
 

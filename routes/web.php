@@ -29,6 +29,12 @@ Route::get('/estudiante/expediente/form', [EstudianteController::class, 'expedie
 Route::post('/expediente/mandar', [EstudianteController::class, 'mandarExpediente'])->name('expediente.mandar');
 Route::get('/estudiante/formulario/enviado', [EstudianteController::class, 'formularioEnviado'])->name('formulario.enviado');
 Route::get('/estudiante/home', [EstudianteController::class,'vistaPrincipalEstudiante'])->name('estudiante.home');
+Route::get('/estudiante/logout', [EstudianteController::class, 'estudianteLogout'])->name('estudiante.logout');
+Route::get('/estudiante/forma03', [EstudianteController::class,'verForma03'])->name('estudiante.forma03');
+Route::get('/estudiante/perfil', [EstudianteController::class, 'estudiantePerfil'])->name('estudiante.perfil');
+Route::get('/estudiante/perfil/editar', [EstudianteController::class, 'editarPerfil'])->name('estudiante.editar.perfil');
+Route::put('/estudiante/perfil/cambiarClave', [EstudianteController::class, 'cambiarClave'])->name('estudiante.cambiar.clave');
+Route::get('/estudiante/historial',[EstudianteController::class, 'verHistorial'])->name('estudiante.historial');
 // docente
 Route::get('/docente/login', [DocenteController::class, 'docenteLogin'])->name('docente.login');
 Route::get('/docente/home',  [DocenteController::class, 'vistaPrincipalDocente'])->name('docente.home');
@@ -36,3 +42,5 @@ Route::get('/docente/logout',[DocenteController::class, 'logout'])->name('docent
 Route::get('/docente/clases',[DocenteController::class, 'verClases'])->name('docente.verClases');
 Route::get('/docente/perfil',[DocenteController::class, 'docentePerfil'])->name('docente.perfil');
 Route::get('/docente/perfil/editar', [DocenteController::class,'editarPerfil'])->name('docente.editar.perfil');
+Route::put('/docente/perfil/cambiarClave', [DocenteController::class,'cambiarClave'])->name('docente.cambiar.clave');
+Route::get('/docente/historial', [DocenteController::class, 'verHistorial'])->name('docente.historial');

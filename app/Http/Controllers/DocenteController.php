@@ -51,4 +51,12 @@ class DocenteController extends Controller
         return view('docenteClave', compact('usuario'));
     }
 
+    public function cambiarClave(Request $request){
+        return redirect()->route('docente.editar.perfil');
+    }
+
+    public function verHistorial(){
+        return view('docenteHistorial');
+    }
+
 }

@@ -18,9 +18,9 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href="{{ route('docente.home')}}">Home</a>
+          <a class="fw-light me-3" href="{{ route('estudiante.home')}}">Home</a>
           <button class="btn btn-danger">
-            <a class="me-3 text-white" href="{{ route('docente.logout') }}">Log out</a></button>
+            <a class="me-3 text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
         </div>
       </nav>
     </head>
@@ -30,19 +30,19 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <h2 class="mb-4"><b>Cambio de Clave Docente</b></h2>
+      <h2 class="mb-4"><b>Cambio de Clave Estudiante</b></h2>
       <!--colocar action  -->
-      <form action="{{route('docente.cambiar.clave')}}" method="POST">
+      <form action="{{route('estudiante.cambiar.clave')}}" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-3">
           <label>Numero de cuenta:</label>
-          <input type="text" class="form-control" name="nombre" value = "{{$usuario['cuenta']}}" readonly>
+          <input type="text" class="form-control" name="nombre" value = "{{$alumno['cuenta']}}" readonly>
         </div>
 
         <div class="mb-3">
           <label for="claveActual">Clave Actual:</label>
-          <input type="text" class="form-control" name="claveActual" id="claveActual" value = "{{$usuario['contrasena']}}">
+          <input type="text" class="form-control" name="claveActual" id="claveActual" value = "{{$alumno['contrasena']}}">
         </div>
     
         <div class="mb-3">
@@ -55,7 +55,7 @@
           <input type="text" class="form-control" name="nuevaClaveConfirm" id="nuevaClaveConfirm">
         </div>
         
-        <a href="{{route('docente.perfil') }}" class="btn btn-warning">Volver</a>
+        <a href="{{route('estudiante.perfil') }}" class="btn btn-warning">Volver</a>
         <button type="submit" class="btn btn-success">Cambiar clave</button>
       </form>
     </div>

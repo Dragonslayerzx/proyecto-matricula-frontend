@@ -38,7 +38,7 @@
             </div>  
             <div class="col-md-6">
               <div class="card-img">
-                <img src="{{ asset('img/docenteHome.png') }}" alt="docenteHome" class="img-fluid"  width="200">
+                <img src="{{ asset('img/docenteHome.png') }}" alt="docenteHome" class="img-fluid"  width="200px">
               </div>
             </div>
           </div>
@@ -60,7 +60,7 @@
       <div class="card">
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Notas</h5>
-          <p class="card-text mt-3">Consulta notas y calificaciones</p>
+          <p class="card-text mt-3">Asigna calificaciones</p>
           <a href="#" class="btn btn-primary mt-3">Ir a Notas</a>
         </div>
       </div>
@@ -70,7 +70,7 @@
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Historial</h5>
           <p class="card-text mt-3">Revisa tu historial de clases</p>
-          <a href="#" class="btn btn-primary mt-3">Ir a Historial</a>
+          <a href="{{route('docente.historial')}}" class="btn btn-primary mt-3">Ir a Historial</a>
         </div>
       </div>
     </div>
