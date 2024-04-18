@@ -33,12 +33,12 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
-              <h5 class="card-title mt-5">¡Bienvenido Docente!</h5>
+              <h5 class="card-title mt-5">¡Bienvenido Estudiante!</h5>
               <p class="card-text mt-4">Sistema de gestión de matrícula</p>
             </div>  
             <div class="col-md-6">
               <div class="card-img">
-                <img src="{{ asset('img/docenteHome.png') }}" alt="docenteHome" class="img-fluid"  width="200">
+                <img src="{{ asset('img/estudianteHome.svg') }}" alt="docenteHome" class="img-fluid"  width="300px">
               </div>
             </div>
           </div>
@@ -50,17 +50,17 @@
     <div class="col-md-4">
       <div class="card">
         <div class="card-body text-center">
-          <h5 class="card-title mt-3">Clases</h5>
-          <p class="card-text mt-3">Explora las clases asignadas</p>
-          <a href="{{ route('docente.verClases') }}" class="btn btn-primary mt-3">Ir a Clases</a>
+          <h5 class="card-title mt-3">Matrícula</h5>
+          <p class="card-text mt-3">Matricula tus clases</p>
+          <a href="#" class="btn btn-primary mt-3">Ir a Matricula</a>
         </div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card">
         <div class="card-body text-center">
-          <h5 class="card-title mt-3">Notas</h5>
-          <p class="card-text mt-3">Consulta notas y calificaciones</p>
+          <h5 class="card-title mt-3">Forma 03</h5>
+          <p class="card-text mt-3">Ver tus clases matriculadas</p>
           <a href="#" class="btn btn-primary mt-3">Ir a Notas</a>
         </div>
       </div>

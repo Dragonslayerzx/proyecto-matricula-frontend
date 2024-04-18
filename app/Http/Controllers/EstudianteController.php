@@ -77,6 +77,10 @@ class EstudianteController extends Controller
     public function formularioEnviado() {
         return view('postFormularioEnviado');
     }
+
+    public function vistaPrincipalEstudiante(){
+        return view('estudiante');
+    }
 }
 
 
