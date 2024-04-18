@@ -19,59 +19,55 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href="{{ route('docente.home')}}">Home</a>
+          <a class="fw-light me-3" href="{{ route('estudiante.home')}}">Home</a>
           <button class="btn btn-danger">
-            <a class="me-3 text-white" href="{{ route('docente.logout') }}">Log out</a></button>
+            <a class="me-3 text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
         </div>
       </nav>
     </head>
 </div>
 
 <!-- Contenido principal -->
-  <h1 class="text-center"><b>Perfil de Docente</b></h1>
+  <h1 class="text-center"><b>Perfil del Estudiante</b></h1>
 <div class="container">
     <div class="row">
         <div class="col-md-7">
-            <h2 class="mt-5 text-center">Información del Docente</h2>
+            <h2 class="mt-5 text-center">Información del Estudiante</h2>
             <table class="table table-bordered mt-5" style="border-color: #a6b3bf;">
                 <tbody>
                     <tr>
                         <th>Numero de cuenta</th>
-                        <td>{{$usuario['cuenta']}}</td>
+                        <td>{{$alumno['cuenta']}}</td>
                     </tr>
                     <tr>
                         <th>Nombre</th>
-                        <td>{{$usuario['nombre']}}</td>
+                        <td>{{$alumno['nombre']}}</td>
                     </tr>
                     <tr>
                         <th>Apellido</th>
-                        <td>{{$usuario['apellido']}}</td>
+                        <td>{{$alumno['apellido']}}</td>
                     </tr>
                     <tr>
                         <th>Sexo</th>
-                        <td>{{$usuario['sexo']}}</td>
+                        <td>{{$alumno['sexo']}}</td>
                     </tr>
                     <tr>
                         <th>Direccion</th>
-                        <td>{{$usuario['direccion']}}</td>
+                        <td>{{$alumno['direccion']}}</td>
                     </tr>
                     <tr>
                         <th>Correo</th>
-                        <td>{{$usuario['email']}}</td>
+                        <td>{{$alumno['email']}}</td>
                     </tr>
                     <tr>
-                        <th>Especializacion</th>
-                        <td>{{$usuario['especializacion']}}</td>
-                    </tr>
-                    <tr>
-                        <th>Fecha de Contratacion</th>
-                        <td>{{$usuario['fechaContrato']->format('Y-m-d')}}</td>
+                        <th>Carrera</th>
+                        <td>{{$alumno['carrera']}}</td>
                     </tr>
                 </tbody>
             </table>
 
             <div class="mt-4 text-center">
-              <a href="{{route('docente.editar.perfil')}}" class="btn btn-warning">Cambio de clave</a>
+              <a href="{{route('estudiante.editar.perfil')}}" class="btn btn-warning">Cambio de clave</a>
             </div>
         </div>
         <div class="col-md-5 text-center">
