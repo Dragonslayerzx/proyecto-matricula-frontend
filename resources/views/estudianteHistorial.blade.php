@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/6ed790b2ab.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <link rel="shortcut icon" href="{{ asset('img/logo.png') }}" type="image/x-icon">
     <title>home</title>
 </head>
@@ -29,44 +32,46 @@
 
 <!-- Contenido principal -->
 <div class="container">
-        <h2 class="text-center">Historial Academico Alumno</h2> 
-        <table class="table table-striped mt-4">
-            <thead>
-                <tr>
-                    <th>Codigo</th>
-                    <th>Clase</th>
-                    <th>UV</th>
-                    <th>Seccion</th>
-                    <th>Periodo</th>
-                    <th>Año</th>
-                    <th>Nota</th>
-                    <th>OBS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>001</td>
-                    <td>Matemáticas</td>
-                    <td>5</td>
-                    <td>1700</td>
-                    <td>3</td>
-                    <td>2023</td>
-                    <td>65</td>
-                    <td>APB</td>
-                </tr>
-                <tr>
-                    <td>002</td>
-                    <td>Spanglish</td>
-                    <td>3</td>
-                    <td>1500</td>
-                    <td>3</td>
-                    <td>2023</td>
-                    <td>65</td>
-                    <td>APB</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <h2 class="text-center">Historial Academico Alumno</h2> 
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th>Codigo</th>
+                <th>Clase</th>
+                <th>UV</th>
+                <th>Seccion</th>
+                <th>Periodo</th>
+                <th>Año</th>
+                <th>Nota</th>
+                <th>OBS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>001</td>
+                <td>Matemáticas</td>
+                <td>5</td>
+                <td>1700</td>
+                <td>3</td>
+                <td>2023</td>
+                <td>65</td>
+                <td>APB</td>
+            </tr>
+            <tr>
+                <td>002</td>
+                <td>Spanglish</td>
+                <td>3</td>
+                <td>1500</td>
+                <td>3</td>
+                <td>2023</td>
+                <td>65</td>
+                <td>APB</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<canvas id="myChart" class="h-65 w-75 mx-auto"></canvas>
 
 <!-- Footer -->
 <footer class="footer mt-5 py-3">
@@ -75,5 +80,6 @@
   </div>
 </footer>
 
+<script src="{{ asset('js/estudianteHistorial.js') }}"></script>
 </body>
 </html>
