@@ -49,7 +49,7 @@ class EstudianteController extends Controller
     public function mandarExpediente(Request $request) {
         try {
             $cliente = new Client();
-            $headers = ['Content-Type' => 'application/json'];
+            $headers = ['Content-Type' => 'multipart/form-data'];
 
             $body = '{
                     "nombres":"'.$request->input('nombres').'",
@@ -58,6 +58,7 @@ class EstudianteController extends Controller
                     "sexo":"'.$request->get('sexo').'",
                     "departamento":"'.$request->get('departamento').'",
                     "carrera":"'.$request->get('carrera').'"
+                    "foto": "'.$request->input('foto').'"
                 }';
             
             $response = $cliente->post('localhost:8080/api/expediente/guardar', [

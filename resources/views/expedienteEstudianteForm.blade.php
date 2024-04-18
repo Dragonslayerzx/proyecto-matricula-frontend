@@ -34,7 +34,7 @@
       <h3>Llena el formulario para poder crear tu <span class="text-orange">expediente</span></h3>
     </section>
     <section class="d-flex mb-3">
-      <form action="{{ route('expediente.mandar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
+      <form  action="{{ route('expediente.mandar') }}" method="post" enctype="multipart/form-data" class="d-flex flex-column justify-content-around p-8 form">
         @csrf
         @method('post')
         <div class="d-flex flex-column align-items-center justify-content-center my-2">
@@ -68,8 +68,8 @@
               <option value="{{ $carrera }}">{{ $carrera }}</option> 
             @endforeach
           </select>
-         <!-- <label for="foto">Subir fotografía</label>
-          <input class="form-control mb-3" type="file" name="foto" id="foto"> -->
+         <label for="foto">Subir fotografía</label>
+          <input class="form-control mb-3" type="file" accept="image/*" name="foto" id="foto">
         </div>
         <button class="btn btn-primary">Enviar</button>
       </form> 
