@@ -19,7 +19,7 @@
         </div>
         <div class="d-flex align-items-center">
           <a class="fw-light me-3" href=" {{ route('estudiante.perfil')}} ">Perfil</a>
-          <button class="btn btn-danger">
+          <button class="btn btn-danger" onclick="logOut()">
             <a class="me-3 text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
         </div>
       </nav>
@@ -52,7 +52,7 @@
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Matrícula</h5>
           <p class="card-text mt-3">Matricula tus clases</p>
-          <a href="#" class="btn btn-primary mt-3">Ir a Matricula</a>
+          <a href="{{ route('estudiante.matricula') }}" class="btn btn-primary mt-3">Ir a Matricula</a>
         </div>
       </div>
     </div>
@@ -83,6 +83,6 @@
     <span class="text-muted">© 2024 Tuition 03</span>
   </div>
 </footer>
-
+<script src="{{ asset("js/loginEstudiante.js") }}"></script>
 </body>
 </html>

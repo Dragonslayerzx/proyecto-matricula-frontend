@@ -118,6 +118,43 @@ class EstudianteController extends Controller
     public function verHistorial(){
         return view('estudianteHistorial');
     }
+
+    public function verPaginamatricula() {
+        $carreras = ["Ing.Sistemas", "ing.Civil", "Psicologia", "Medicina", "Finanzas"];
+        $clases = ['MM110', "POO", "MM201", "PS-314", "Resistencia de materiales", "Sentimientos I"];
+        $docentes = [[
+
+            "nombreClase" => "Lenguajes de Programación",
+            "docente" => "Harold Coello",
+            "codigo" => "001",
+            "seccion" => "1700",
+            "uv" => "4"
+            
+            ],
+            [
+
+                "nombreClase" => "Programación Orientada a Objetos",
+                "docente" => "José Mario Inestroza",
+                "codigo" => "002",
+                "seccion" => "1100",
+                "uv" => "4"
+                
+            ],
+            [
+
+                "nombreClase" => "Seguridad Informática",
+                "docente" => "Alex Moncada",
+                "codigo" => "005",
+                "seccion" => "1900",
+                "uv" => "5"
+                
+            ]
+        ];
+
+        return view('matricula', compact('carreras', 'clases', 'docentes'));
+    }
+
+
 }
 
 

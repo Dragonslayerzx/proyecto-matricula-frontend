@@ -23,7 +23,7 @@
         </div>
         <div class="d-flex align-items-center">
           <a class="fw-light me-3" href="{{ route('estudiante.home')}}">Home</a>
-          <button class="btn btn-danger me-3">
+          <button class="btn btn-danger me-3" onclick="logOut()">
             <a class="text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
         </div>
       </nav>
@@ -81,5 +81,6 @@
 </footer>
 
 <script src="{{ asset('js/estudianteHistorial.js') }}"></script>
+<script src="{{ asset("js/loginEstudiante.js") }}"></script>
 </body>
 </html>

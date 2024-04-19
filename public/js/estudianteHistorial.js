@@ -1,37 +1,3 @@
-const likeBtn = document.getElementById('likeBtn')
-const dislikeBtn = document.getElementById('dislikeBtn')
-
-function calificarDocente(button) {
-  const buttonId = button.id 
-
-  btnSeleccionado(buttonId); 
-}
-
-function sentLikeToServer(btn) {
-  isSent = true
-  setSentLike(btn);
-}
-
-function setSentLike(btn) {
-  btn.disabled = true
-}
-
-
-function btnSeleccionado(btnId) {
-  const btn = btnId == 'likeBtn' ? likeBtn : dislikeBtn
-  if (btn == likeBtn) {
-    dislikeBtn.classList.remove('btn-danger')
-    btn.classList.remove('btn-warning')
-    btn.classList.add('btn-primary')
-  }
-
-  else {
-    likeBtn.classList.remove('btn-primary')
-    btn.classList.remove('btn-secondary')
-    btn.classList.add('btn-danger')
-  }
-}
-
 // graficos
 // yvalues son las notas (indice)
 const yvalues = [97, 93, 85, 82, 86]

@@ -35,6 +35,7 @@ Route::get('/estudiante/perfil', [EstudianteController::class, 'estudiantePerfil
 Route::get('/estudiante/perfil/editar', [EstudianteController::class, 'editarPerfil'])->name('estudiante.editar.perfil');
 Route::put('/estudiante/perfil/cambiarClave', [EstudianteController::class, 'cambiarClave'])->name('estudiante.cambiar.clave');
 Route::get('/estudiante/historial',[EstudianteController::class, 'verHistorial'])->name('estudiante.historial');
+Route::get('/estudiante/matricula', [EstudianteController::class, 'verPaginaMatricula'])->name('estudiante.matricula');
 // docente
 Route::get('/docente/login', [DocenteController::class, 'docenteLogin'])->name('docente.login');
 Route::get('/docente/home',  [DocenteController::class, 'vistaPrincipalDocente'])->name('docente.home');
