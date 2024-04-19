@@ -59,4 +59,51 @@ class DocenteController extends Controller
         return view('docenteHistorial');
     }
 
+    //Coordinador
+    public function cordiHome(){
+        return view('coordinador');
+    }
+
+    public function cordiPlan(){
+        return view ('coordinadorPA');
+    }
+
+    public function crearSeccion(){
+
+        $edificios = [
+            ['id' => 1, 'nombre' => 'D1'],
+            ['id' => 2, 'nombre' => 'B2'],
+            ['id' => 3, 'nombre' => '1847']
+        ];
+        $salonesDisponibles = [
+            ['id' => 1, 'nombre' => 'Salón A'],
+            ['id' => 2, 'nombre' => 'Salón B'],
+            ['id' => 3, 'nombre' => 'Salón C']
+        ];
+
+        $docentesDisponibles = [
+            ['id' => 1, 'nombre' => 'Juan Pérez'],
+            ['id' => 2, 'nombre' => 'María García'],
+            ['id' => 3, 'nombre' => 'Carlos López']
+        ];
+
+        $equiposDisponibles = [
+            ['id' => 1, 'nombre' => 'Data show'],
+            ['id' => 2, 'nombre' => 'Routers'],
+            ['id' => 3, 'nombre' => 'Switches']
+        ];
+        $clases = [
+            ['id' => 1, 'nombre' => 'Calculo 1'],
+            ['id' => 2, 'nombre' => 'Redes 1'],
+            ['id' => 3, 'nombre' => 'Lenguajes de Programacion']
+        ];
+
+
+        return view('coordinadorCrearSeccion', compact('salonesDisponibles', 'docentesDisponibles', 'equiposDisponibles', 'clases', 'edificios'));
+    }
+
+    public function guardarSeccion(Request $request){
+        return view ('coordinador');
+    }
+
 }
