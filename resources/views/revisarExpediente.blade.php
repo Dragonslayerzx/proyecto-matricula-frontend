@@ -47,30 +47,29 @@
         </div> 
         <div>
           <label for="nombres">Nombres</label>
-          <input class="form-control mb-3" id="nombres" type="text" placeholder="Nombres" name="nombres" minlength="3" maxlength="15" required>
+          <input class="form-control mb-3" id="nombres" type="text" value="{{ $expediente->nombres }}" name="nombres" minlength="3" maxlength="15" required readonly>
           <label for="aplellidos">Apellidos</label>
-          <input class="form-control mb-3" type="text" id="apellidos" placeholder="Apellidos" name="apellidos" minlength="3" maxlength="12" required>
+          <input class="form-control mb-3" type="text" id="apellidos" value="{{ $expediente->apellidos }}" name="apellidos" minlength="3" maxlength="12" required readonly>
           <label for="correo">Correo</label>
-          <input class="form-control mb-3" type="email" id="correo" name="correo" placeholder="Correo" required>
+          <input class="form-control mb-3" type="email" id="correo" name="correo" value="{{ $expediente->correo }}" required readonly>
           <label for="sexo">Sexo</label>
-          <select class="form-select mb-3" name="sexo" id="sexo" required>
-            <option selected>Selecciona tu sexo</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
+          <select class="form-select mb-3" name="sexo" id="sexo" @readonly(true) required>
+            <option>Selecciona tu sexo</option>
+            @if ($expediente->sexo)
+             <option value="Masculino" selected>Masculino</option>
+             <option value="Femenino">Femenino</option>
+            @else
+             <option value="Masculino" selected>Masculino</option>
+             <option value="Femenino" selected>Femenino</option>   
+            @endif
           </select>
           <label for="departamento">Departamento de residencia</label>
           <select class="form-select mb-3" name="departamento" id="departamento" required>
-            <option selected>Selecciona el departamento de residencia</option>
-            @foreach ($departamentos as $departamento)
-              <option value="{{ $departamento }}">{{ $departamento }}</option> 
-            @endforeach
+            <option selected value="{{ $expediente->direccion }}">{{ $expediente->direccion }}</option>
           </select>
           <label for="carrera">Carrera</label>
           <select class="form-select mb-3" name="carrera" id="carrera" required>
-            <option selected>Selecciona una carrera</option>
-            @foreach ($carreras as $carrera)
-              <option value="{{ $carrera }}">{{ $carrera }}</option> 
-            @endforeach
+            <option selected value="{{ $expediente->carrera }}">{{ $expediente->carrera }}</option>
           </select>
          <!-- <label for="foto">Subir fotografía</label>
           <input class="form-control mb-3" type="file" name="foto" id="foto"> -->

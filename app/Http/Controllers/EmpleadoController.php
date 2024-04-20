@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class EmpleadoController extends Controller
 {
@@ -11,10 +14,20 @@ class EmpleadoController extends Controller
     }
 
     public function vistaPrincipalEmpleado() {
-        return view('registroEmpleado');
+        try {
+            $client = new Client();
+            $headers = ['Content-Type' => 'application/json'];
+            $endpoint = 'http://localhost:8080/api/expediente/alumnos/obtener';
+            $res = $client->get($endpoint);            
+            $expedientes = json_decode($res->getBody());
+            return view('registroEmpleado', compact('expedientes'));
+        } catch (RequestException $e) {
+            return redirect()->route('landing');
+        }
+
     }
 
-    public function expedienteRevisar() {
+    public function expedienteRevisar($id) {
         // TODO: buscar por id y mandar al formulario
          $departamentos = [
             "Atlántida",
@@ -37,9 +50,16 @@ class EmpleadoController extends Controller
             "Yoro"
         ];
 
-        $carreras = ['psicología', 'fisica', 'pedagogía'];
+        $client = new Client();
+        $endpointExpediente = 'http://localhost:8080/api/expediente/obtener/' . $id;
+        $res = $client->get($endpointExpediente);
+        $expediente = json_decode($res->getBody());
 
-        return view('revisarExpediente', compact('departamentos', 'carreras'));
+        $endpointCarreras = 'http://localhost:8080/api/carreras/obtener';
+        $carrerasRes = $client->get($endpointCarreras);
+        $carreras = json_decode($carrerasRes->getBody());
+
+        return view('revisarExpediente', compact('departamentos', 'carreras', 'expediente'));
     }
 
     public function crearDocente() {
