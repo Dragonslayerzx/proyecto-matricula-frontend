@@ -46,3 +46,8 @@ Route::get('/docente/perfil',[DocenteController::class, 'docentePerfil'])->name(
 Route::get('/docente/perfil/editar', [DocenteController::class,'editarPerfil'])->name('docente.editar.perfil');
 Route::put('/docente/perfil/cambiarClave', [DocenteController::class,'cambiarClave'])->name('docente.cambiar.clave');
 Route::get('/docente/historial', [DocenteController::class, 'verHistorial'])->name('docente.historial');
+//docente (coordinador)
+Route::get('coordinador/home', [DocenteController::class, 'cordiHome'])->name('coordinador.home');
+Route::get('coordinador/planificacion', [DocenteController::class, 'cordiPlan'])->name('coordinador.planificacion');
+Route::get('coordinador/seccion/crear', [DocenteController::class, 'crearSeccion'])->name('coordinador.crear.seccion');
+Route::post('coordinador/seccion', [DocenteController::class,'guardarSeccion'])->name('coordinador.guardar.seccion');

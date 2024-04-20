@@ -18,9 +18,9 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href=" {{ route('estudiante.perfil')}} ">Perfil</a>
-          <button class="btn btn-danger me-3" onclick="logOut()">
-            <a class="text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
+          <a class="fw-light me-3" href="{{ route('docente.perfil') }}">Perfil</a>
+          <button class="btn btn-danger me-3">
+            <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
       </nav>
     </head>
@@ -33,12 +33,12 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
-              <h5 class="card-title mt-5">¡Bienvenido Estudiante!</h5>
+              <h5 class="card-title mt-5">¡Bienvenido Coordinador!</h5>
               <p class="card-text mt-4">Sistema de gestión de matrícula</p>
             </div>  
             <div class="col-md-6">
               <div class="card-img">
-                <img src="{{ asset('img/estudianteHome.svg') }}" alt="estudianteHome" class="img-fluid"  width="300px">
+                <img src="{{ asset('img/cordiHome.svg') }}" alt="docenteHome" class="img-fluid py-3"  width="250px">
               </div>
             </div>
           </div>
@@ -47,21 +47,21 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-md-4">
+  <div class="col-md-4">
       <div class="card">
         <div class="card-body text-center">
-          <h5 class="card-title mt-3">Matrícula</h5>
-          <p class="card-text mt-3">Matricula tus clases</p>
-          <a href="{{ route('estudiante.matricula') }}" class="btn btn-primary mt-3">Ir a Matricula</a>
+          <h5 class="card-title mt-3">Planificacion Académica</h5>
+          <p class="card-text mt-3">Ver, crear y modificar secciones</p>
+          <a href="{{ route('coordinador.planificacion') }}" class="btn btn-primary mt-3">Ir a PA</a>
         </div>
       </div>
     </div>
     <div class="col-md-4">
       <div class="card">
         <div class="card-body text-center">
-          <h5 class="card-title mt-3">Forma 03</h5>
-          <p class="card-text mt-3">Ver tus clases matriculadas</p>
-          <a href="{{route('estudiante.forma03')}}" class="btn btn-primary mt-3">Ir a Notas</a>
+          <h5 class="card-title mt-3">Clases</h5>
+          <p class="card-text mt-3">Explora las clases asignadas</p>
+          <a href="{{route('docente.verClases')}}" class="btn btn-primary mt-3">Ir a Clases</a>
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Historial</h5>
           <p class="card-text mt-3">Revisa tu historial de clases</p>
-          <a href="{{route('estudiante.historial')}}" class="btn btn-primary mt-3">Ir a Historial</a>
+          <a href="{{route('docente.historial')}}" class="btn btn-primary mt-3">Ir a Historial</a>
         </div>
       </div>
     </div>
@@ -83,6 +83,6 @@
     <span class="text-muted">© 2024 Tuition 03</span>
   </div>
 </footer>
-<script src="{{ asset("js/loginEstudiante.js") }}"></script>
+
 </body>
 </html>
