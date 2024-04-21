@@ -21,7 +21,7 @@
         <div class="d-flex align-items-center">
           <a class="fw-light me-3" href="{{ route('docente.perfil') }}">Perfil</a>
           <a class="fw-light me-3" href="{{ route('docente.home')}}">Home</a>
-          <button class="btn btn-danger me-3">
+          <button class="btn btn-danger me-4">
             <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
       </nav>
@@ -29,32 +29,37 @@
 </div>
 
 <!-- Contenido Principal -->
-<div class="container mt-3 mb-5 text-center">
-  <h3>Clases asignadas</h3>
-</div>  
-<div class="container radius">
-  <div class="row">
+<h1 class="mb-4 text-center">Evaluación de Sección {{$idSeccion}}</h1>
 
-    @foreach ($clases as $clase)
-    <div class="col-lg-4">
-      <div class="card mb-5 rounded mx-auto" style="width: 18rem;">
-        <img src="{{ asset('img/clases.png') }}" class="card-img-top" alt="clases logo">
-        <div class="card-body px-5">
-          <h3 class="card-title fw-light">{{$clase['nombre']}}</h3>
-          <h6>Código: <span class="fw-bold">{{$clase['codigo']}}</span></h6>
-          <h6>Sección: <span class="fw-bold">{{$clase['seccion']}}</span></h6>
-          <h6>UV: <span class="fw-bold">{{$clase['uv']}}</span></h6>
-          <div class="text-center mt-3">
-          <a class="btn btn-primary" href="{{ route('docente.ver.curso',$clase['seccion'] )}}">Ver curso</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    @endforeach
-  
-  </div>
+<!-- Lista de Alumnos -->
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Número de Cuenta</th>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Correo</th>
+                <th>Direccion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($alumnos as $alumno)
+            <tr>
+                <td>{{ $alumno['numerocuenta'] }}</td>
+                <td>{{ $alumno['nombre'] }}</td>
+                <td>{{ $alumno['apellido'] }}</td>
+                <td>{{ $alumno['correo'] }}</td>
+                <td>{{ $alumno['direccion'] }}</td>
+                <td>
+                    <a href="#" class="btn btn-primary btn-sm">Asignar Nota</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>
-
 
 <!-- Footer -->
 <footer class="footer mt-5 py-3">

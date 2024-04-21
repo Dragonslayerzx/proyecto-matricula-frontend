@@ -18,7 +18,7 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href="{{ route('docente.perfil') }}">Perfil</a>
+          <a class="fw-light me-3" href="{{ route('coordinador.perfil') }}">Perfil</a>
           <button class="btn btn-danger me-3">
             <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
@@ -61,7 +61,7 @@
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Clases</h5>
           <p class="card-text mt-3">Explora las clases asignadas</p>
-          <a href="{{route('docente.verClases')}}" class="btn btn-primary mt-3">Ir a Clases</a>
+          <a href="{{route('coordinador.clases')}}" class="btn btn-primary mt-3">Ir a Clases</a>
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Historial</h5>
           <p class="card-text mt-3">Revisa tu historial de clases</p>
-          <a href="{{route('docente.historial')}}" class="btn btn-primary mt-3">Ir a Historial</a>
+          <a href="{{route('coordinador.historial')}}" class="btn btn-primary mt-3">Ir a Historial</a>
         </div>
       </div>
     </div>

@@ -19,8 +19,8 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href="{{ route('docente.perfil') }}">Perfil</a>
-          <a class="fw-light me-3" href="{{ route('docente.home')}}">Home</a>
+          <a class="fw-light me-3" href="{{ route('coordinador.perfil') }}">Perfil</a>
+          <a class="fw-light me-3" href="{{ route('coordinador.home')}}">Home</a>
           <button class="btn btn-danger me-3">
             <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
@@ -45,7 +45,7 @@
           <h6>Sección: <span class="fw-bold">{{$clase['seccion']}}</span></h6>
           <h6>UV: <span class="fw-bold">{{$clase['uv']}}</span></h6>
           <div class="text-center mt-3">
-          <a class="btn btn-primary" href="{{ route('docente.ver.curso',$clase['seccion'] )}}">Ver curso</a>
+          <a class="btn btn-primary" href="{{ route('coordinador.ver.curso',$clase['seccion'] )}}">Ver curso</a>
           </div>
         </div>
       </div>
@@ -54,7 +54,6 @@
   
   </div>
 </div>
-
 
 <!-- Footer -->
 <footer class="footer mt-5 py-3">

@@ -55,6 +55,6 @@
     </section>
   </main>
   <script src="{{ asset('js/clases.js') }}"></script>
-  <script src="{{ asset('js/loginEstudiante.js') }}"></script>
+  <!--<script src="{{ asset('js/loginEstudiante.js') }}"></script>-->
 </body>
 </html>
