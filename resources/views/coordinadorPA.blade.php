@@ -18,7 +18,7 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href=" {{ route('docente.perfil') }} ">Perfil</a>
+          <a class="fw-light me-3" href=" {{ route('coordinador.perfil') }} ">Perfil</a>
           <button class="btn btn-danger me-3">
             <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
@@ -34,31 +34,26 @@
             <tr>
                 <th>Seccion ID</th>
                 <th>Clase</th>
-                <th>Hora de Inicio</th>
+                <th>Hora de Inicio </th>
                 <th>Hora de Finalización</th>
                 <th>Docente</th>
+                <th>Edificio</th>
                 <th>Salón</th>
                 <th>Editar</th>
             </tr>
         </thead>
         <tbody>
+            @foreach($secciones as $seccion)
             <tr>
-                <td>1</td>
-                <td>Matemáticas</td>
-                <td>08:00 AM</td>
-                <td>10:00 AM</td>
-                <td>Profesor A</td>
-                <td>Aula 101</td>
-                <td><a href="#" class="btn btn-primary">Editar</a></td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Ciencias</td>
-                <td>10:00 AM</td>
-                <td>12:00 PM</td>
-                <td>Profesor B</td>
-                <td>Aula 102</td>
-                <td><a href="#" class="btn btn-primary">Editar</a></td>
+                <td>{{ $seccion['idSeccion'] }} </td>   
+                <td>{{ $seccion['nombre'] }} </td>   
+                <td>{{ $seccion['horaInicio'] }} </td>   
+                <td>{{ $seccion['horaFin'] }} </td>   
+                <td>{{ $seccion['docente'] }} </td>   
+                <td>{{ $seccion['edificio'] }} </td>   
+                <td>{{ $seccion['salon'] }} </td>   
+                <td><a href=" {{route('coordinador.editar.seccion', ['idSeccion' => $seccion['idSeccion']]) }} " class="btn btn-primary">Editar</a></td>
+            @endforeach
             </tr>
         </tbody>
     </table>

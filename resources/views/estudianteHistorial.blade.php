@@ -32,7 +32,7 @@
 
 <!-- Contenido principal -->
 <div class="container">
-    <h2 class="text-center">Historial Academico Alumno</h2> 
+    <h2 class="text-center">Historial Académico Alumno</h2> 
     <table class="table table-striped mt-4">
         <thead>
             <tr>

@@ -18,7 +18,7 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href="{{ route('docente.perfil') }}">Perfil</a>
+          <a class="fw-light me-3" href="{{ route('coordinador.perfil') }}">Perfil</a>
           <button class="btn btn-danger me-3">
             <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
@@ -28,10 +28,14 @@
 
 <!-- Contenido principal -->
 <div class="container col-md-8">
-    <h1>Crear Sección</h1>
-    <form action="{{route('coordinador.guardar.seccion')}}" method="POST">
+    <h1>Editar Sección</h1>
+    <form action="{{ route('coordinador.actualizar.seccion', $seccion['idSeccion']) }}" method="POST">
         @csrf
         @method('PUT')
+        <div class="mb-3">
+            <label for="seccion_id" class="form-label">Seccion:</label>
+            <input type="text" class="form-control" id="seccion_id" name="seccion_id" value=" {{ $seccion['idSeccion'] }}" readonly>
+        </div>
         <div class="mb-3">
             <label for="clase_id" class="form-label">Clase:</label>
             <select class="form-select" id="clase_id" name="clase_id">

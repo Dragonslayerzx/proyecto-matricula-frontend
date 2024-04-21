@@ -19,7 +19,7 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href="{{ route('docente.home')}}">Home</a>
+          <a class="fw-light me-3" href="{{ route('coordinador.home')}}">Home</a>
           <button class="btn btn-danger me-3">
             <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <th>Cargo</th>
-                        <td>Docente</td>
+                        <td>Coordinador</td>
                     </tr>
                     <tr>
                         <th>Fecha de Contratacion</th>
@@ -73,14 +73,15 @@
                     </tr>
                 </tbody>
             </table>
-
+            <!--
             <div class="mt-4 text-center">
-              <a href="{{route('docente.editar.perfil')}}" class="btn btn-warning">Cambio de clave</a>
+              <a href="#" class="btn btn-warning">Cambio de clave</a>
             </div>
+            -->
         </div>
         <div class="col-md-5 text-center">
             <h2 class="mt-5 text-center">Foto de Perfil</h2>
-            <img src="{{ asset('img/beanhead.svg')}}" alt="fotoPerfil" class="img-fluid" style="margin-top: -8vh; max-width: 450px;">
+            <img src="{{ asset('img/beanhead.svg')}}" alt="fotoPerfil" class="img-fluid" style="margin-top: -7vh; max-width: 450px;">
         </div>
     </div>
 </div>
