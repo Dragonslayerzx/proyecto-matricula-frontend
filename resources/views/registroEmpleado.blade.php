@@ -44,68 +44,17 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Carlos</td>
-            <td>Flores</td>
-            <td>Ing. Sistemas</td>
-            <td><a href="{{ route('expediente.revisar') }}">Revisar</a></td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Ing. Industrial</td>
-            <td><a href="{{ route('expediente.revisar') }}">Revisar</a></td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>McCarthy</td>
-            <td>Física</td>
-            <td><a href="{{ route('expediente.revisar') }}">Revisar</a></td>
-          </tr>
+          @foreach ($expedientes as $expediente)
+            <tr>
+              <th scope="row">{{ $expediente->idExpediente }}</th>
+              <td>{{ $expediente->nombres }}</td>
+              <td>{{ $expediente->apellidos }}</td>
+              <td>{{ $expediente->carrera }}</td>
+              <td><a href="{{ route('expediente.revisar',  $expediente->idExpediente) }}">Revisar</a></td>
+            </tr>    
+          @endforeach
         </tbody>
       </table>
-    </div>
-    <div class="d-flex flex-column justify-content-center mt-4">
-      <div>
-        <h4>Expedientes Docentes</h4>
-      </div>
-      <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Apellido</th>
-              <th scope="col">Carrera</th>
-              <th scope="col">Revisar</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Carlos</td>
-              <td>Flores</td>
-              <td>Ing. Sistemas</td>
-              <td><a href="{{ route('expediente.docente.revisar') }}">Revisar</a></td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>Ing. Industrial</td>
-              <td><a href="{{ route('expediente.docente.revisar') }}">Revisar</a></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>McCarthy</td>
-              <td>Física</td>
-              <td><a href="{{ route('expediente.docente.revisar') }}">Revisar</a></td>
-            </tr>
-          </tbody>
-        </table>
     </div>
   </main>
 </body>

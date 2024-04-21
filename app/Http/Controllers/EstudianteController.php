@@ -5,11 +5,38 @@ namespace App\Http\Controllers;
 use Error;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class EstudianteController extends Controller
 {
     public function estudianteLogin() {
         return view('estudianteLogin');
+    }
+
+    public function verificarLogin(Request $req) {
+        try {
+            $endpoint = 'http://localhost:8080/alumno/verificacion';
+            $client = new Client();
+            $correo = $req->input('correo');
+            $passw = $req->input('contrasena');
+
+            $headers = ['Content-Type' => 'application/json'];
+            $body = '{
+                    "correo": "'.$correo.'",
+                    "contrasena": "'.$passw.'"
+                }';
+
+            $res = $client->post($endpoint, [
+                'headers' => $headers,
+                'body' => $body
+            ]);
+
+            if ($res)
+              return redirect()->route('estudiante.home');            
+
+        } catch (RequestException $e) {
+            return redirect()->route('estudiante.login');
+        }
     }
    
     public function expedienteEstudianteForm() {
@@ -48,23 +75,42 @@ class EstudianteController extends Controller
 
     public function mandarExpediente(Request $request) {
         try {
+            $endpoint = 'localhost:8080/api/expediente/guardar';
             $cliente = new Client();
             $headers = ['Content-Type' => 'multipart/form-data'];
 
-            $body = '{
-                    "nombres":"'.$request->input('nombres').'",
-                    "apellidos":"'.$request->input('apellidos').'",
-                    "correo":"'.$request->input('correo').'",
-                    "sexo":"'.$request->get('sexo').'",
-                    "departamento":"'.$request->get('departamento').'",
-                    "carrera":"'.$request->get('carrera').'"
-                    "foto": "'.$request->input('foto').'"
-                }';
-            
-            $response = $cliente->post('localhost:8080/api/expediente/guardar', [
-                'headers' => $headers,
-                'body' => $body
+            $sexo = $request->get('sexo') == 'Masculino' ? true: false;
+
+            $body = json_encode([
+                'apellidos' => $request->input('apellidos'),
+                'nombres' => $request->input('nombres'),
+                'correo' => $request->input('correo'),
+                'sexo' => $sexo,
+                'direccion' => $request->get('departamento'),
+                'carrera' => $request->get('carrera')
             ]);
+           
+            $path = "C:\\Users\\Carlo\\OneDrive\\images\\";
+            $image = $request->file('foto');
+            $imageName = $image->getClientOriginalName();
+            $image->move($path, $imageName);
+            $res = $cliente->post($endpoint, [
+                'multipart' => [ 
+                    [
+                        'name' => 'alumno',
+                        'contents' => $body
+                    ],
+                    [
+                        'name' => 'image',
+                        'contents' => fopen($path . $imageName, 'r')
+                    ]
+                ]
+              /*   'headers' => $headers,
+                'body' => $body */
+            ]);
+
+            if ($res)
+              return redirect()->route('formulario.enviado');
 
             return redirect()->route('landing');
 
