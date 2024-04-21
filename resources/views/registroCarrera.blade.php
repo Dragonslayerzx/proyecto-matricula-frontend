@@ -45,13 +45,12 @@
           <select class="form-select mb-4" name="coordinador" id="coordinador">
             <option selected>coordinador</option>
             @foreach ($coordinadores as $coordinador)
-              <option value="{{ $coordinador }}">{{ $coordinador }}</option>
+              <option value="{{ $coordinador->numeroCuenta }}">{{ $coordinador }}</option>
             @endforeach
           </select>
         </div>
         <div class="d-flex justify-content-center align-items-center">
           <button class="btn btn-primary me-3">Crear</button>
-          <button class="btn btn-danger">Eliminar</button>
         </div>
       </form> 
     </section>

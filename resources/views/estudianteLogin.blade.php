@@ -38,15 +38,15 @@
           <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div> 
-        <input class="form-control mb-3" type="text" placeholder="Correo" id="correo" name="correo">
+        <input class="form-control mb-3" type="text" placeholder="Numero de cuenta" id="correo" name="numeroCuenta">
         <input class="form-control mb-3" type="password" placeholder="contraseña" id="passw" name="contrasena">
-        <button class="btn btn-primary mb-3" id="btnUserLog" onclick="fetchEstudianteLoginInfo()">Entrar</button>
+        <button class="btn btn-primary mb-3" id="btnUserLog">Entrar</button>
         <div>
           <h6 class="fw-light">No tienes cuenta <a href="{{ route('estudiante.expediente.form') }}">registrate</a></h6>
         </div>
       </form> 
     </section>
   </main>
-  <script src="{{ asset("js/loginEstudiante.js") }}"></script>
+ <!-- <script src="{{ asset("js/loginEstudiante.js") }}"></script> -->
 </body>
 </html>

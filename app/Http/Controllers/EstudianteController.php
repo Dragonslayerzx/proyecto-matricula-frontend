@@ -6,6 +6,7 @@ use Error;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use Symfony\Component\HttpFoundation\File\Exception\FormSizeFileException;
 
 class EstudianteController extends Controller
 {
@@ -15,14 +16,14 @@ class EstudianteController extends Controller
 
     public function verificarLogin(Request $req) {
         try {
-            $endpoint = 'http://localhost:8080/alumno/verificacion';
+            $endpoint = 'http://localhost:8080/api/alumnos/verificacion';
             $client = new Client();
-            $correo = $req->input('correo');
+            $numeroCuenta = $req->input('numeroCuenta');
             $passw = $req->input('contrasena');
 
             $headers = ['Content-Type' => 'application/json'];
             $body = '{
-                    "correo": "'.$correo.'",
+                    "numeroCuenta": "'.$numeroCuenta.'",
                     "contrasena": "'.$passw.'"
                 }';
 
@@ -31,8 +32,28 @@ class EstudianteController extends Controller
                 'body' => $body
             ]);
 
-            if ($res)
-              return redirect()->route('estudiante.home');            
+            if ($res) {
+                try {
+                    $alumnoEndpoint = 'http://localhost:8080/api/alumnos/' . $numeroCuenta;
+                    $alumnoRes = $client->get($alumnoEndpoint); 
+                    $alumno = json_decode($alumnoRes->getBody());
+                    return view('estudiante', compact('alumno'));
+                } catch (RequestException $e) {
+                    echo $e->getMessage();
+                   // return redirect()->route('landing');
+                } 
+            } else {
+                return redirect()->route('estudiante.login');
+            } 
+
+            /* if ($res->getStatusCode() > 200 && $res->getStatusCode() < 300) {
+                echo json_decode($res->getBody());
+                $c = new Client();
+                $getEstudianteURL = 'http://localhost:8080/api/alumno/' . $correo;
+                $est = $c->get($getEstudianteURL);
+                $estudiante = json_decode($est->getBody());
+                return redirect()->route('estudiante.home')->with($estudiante); 
+            } */
 
         } catch (RequestException $e) {
             return redirect()->route('estudiante.login');
@@ -75,7 +96,7 @@ class EstudianteController extends Controller
 
     public function mandarExpediente(Request $request) {
         try {
-            $endpoint = 'localhost:8080/api/expediente/guardar';
+            $endpoint = 'localhost:8080/api/matricula/expediente/guardar';
             $cliente = new Client();
             $headers = ['Content-Type' => 'multipart/form-data'];
 
@@ -90,7 +111,7 @@ class EstudianteController extends Controller
                 'carrera' => $request->get('carrera')
             ]);
            
-            $path = "C:\\Users\\Carlo\\OneDrive\\images\\";
+            $path = "images/";
             $image = $request->file('foto');
             $imageName = $image->getClientOriginalName();
             $image->move($path, $imageName);
@@ -109,12 +130,12 @@ class EstudianteController extends Controller
                 'body' => $body */
             ]);
 
-            if ($res)
+            if (json_decode($res->getBody()))
               return redirect()->route('formulario.enviado');
 
             return redirect()->route('landing');
 
-        } catch(Error $e) {
+        } catch(FormSizeFileException $e) {
             return redirect()->route('landing');
         }
         

@@ -13,16 +13,20 @@ Route::get('/', function () {
 Route::get('/landing', [LandingController::class, 'landing'])->name('landing');
 
 //empleado
-Route::get('/empleado/login', [EmpleadoController::class, 'empleadoLogin'])->name('empleado.login');
+Route::get('/empleado/login/vista', [EmpleadoController::class, 'empleadoLogin'])->name('empleado.login');
 Route::get('/empleado/home', [EmpleadoController::class, 'vistaPrincipalEmpleado'])->name('empleado.home');
+Route::post('/empleado/login', [EmpleadoController::class, 'verificarEmpleadoLogin'])->name('empleado.login.verificar');
 Route::get('/registro/expediente/revisar/{id}', [EmpleadoController::class, 'expedienteRevisar'])->name('expediente.revisar');
 Route::get('/registro/docente/crear', [EmpleadoController::class, 'crearDocente'])->name('crear.docente');
 Route::get('/registro/matricula/establecer', [EmpleadoController::class, 'establecerMatricula'])->name('establecer.matricula');
+Route::post('/registro/establecer/matricular', [EmpleadoController::class, 'enviarDatosFechaMatricula'])->name('empleado.establecer.matricula');
 Route::get('/empleado/logout', [EmpleadoController::class, 'logout'])->name('logout');
 Route::get('/registrar/carrera', [EmpleadoController::class, 'registrarCarrera'])->name('registrar.carrera');
+Route::post('/registro/carrera', [EmpleadoController::class, 'guardarCarrera'])->name('carrera.guardar');
 Route::get('/registrar/edificio', [EmpleadoController::class, 'registrarEdificio'])->name('registrar.edificio');
 Route::get('/registrar/salon', [EmpleadoController::class, 'registrarSalon'])->name('registrar.salon');
 Route::get('/registro/expediente/docente/revisar', [EmpleadoController::class, 'expedienteDocenteRevisar'])->name('expediente.docente.revisar');
+Route::post('/registro/estudiante/guardar', [EmpleadoController::class, 'guardarEstudiante'])->name('crear.estudiante');
 // estudiantes
 Route::get('/estudiante/login', [EstudianteController::class, 'estudianteLogin'])->name('estudiante.login');
 Route::post('/estudiante/login/validar', [EstudianteController::class, 'verificarLogin'])->name('estudiante.verificar.login');

@@ -10,6 +10,12 @@
   <title>login</title>
 </head>
 <body class="page mx-auto">
+  <?php
+
+  $paths = explode('/', $expediente->foto);
+  $fotoPerfil = $paths[count($paths) - 2] . '/' . $paths[count($paths) - 1];
+
+  ?>
   <div>
     <head>
       <nav class="d-flex justify-content-center align-items-center">
@@ -38,9 +44,9 @@
       <h3>Expediente aplicante a estudiante</span></h3>
     </section>
     <section class="d-flex mb-3">
-      <form action="{{ route('expediente.mandar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
-        @csrf
+      <form action="{{ route('crear.estudiante') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
         @method('post')
+        @csrf
         <div class="d-flex flex-column align-items-center justify-content-center my-2">
           <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
           <h3>Tuition<span class="text-orange">03</span></h3>
@@ -50,17 +56,18 @@
           <input class="form-control mb-3" id="nombres" type="text" value="{{ $expediente->nombres }}" name="nombres" minlength="3" maxlength="15" required readonly>
           <label for="aplellidos">Apellidos</label>
           <input class="form-control mb-3" type="text" id="apellidos" value="{{ $expediente->apellidos }}" name="apellidos" minlength="3" maxlength="12" required readonly>
+          <label for="passw">Agregar contraseña para estudiante</label>
+          <input class="form-control mb-3" type="password" name="contrasena" id="passw" >
           <label for="correo">Correo</label>
           <input class="form-control mb-3" type="email" id="correo" name="correo" value="{{ $expediente->correo }}" required readonly>
+          <label for="idExpediente"></label>
+          <input class="form-control mb-3" type="text" id="idExpediente" name="idExpediente" value="{{ $expediente->idExpediente }}">
           <label for="sexo">Sexo</label>
           <select class="form-select mb-3" name="sexo" id="sexo" @readonly(true) required>
-            <option>Selecciona tu sexo</option>
             @if ($expediente->sexo)
-             <option value="Masculino" selected>Masculino</option>
-             <option value="Femenino">Femenino</option>
+            <option value="Masculino" selected>Masculino</option>
             @else
-             <option value="Masculino" selected>Masculino</option>
-             <option value="Femenino" selected>Femenino</option>   
+            <option value="Femenino" selected>Femenino</option>
             @endif
           </select>
           <label for="departamento">Departamento de residencia</label>
@@ -71,6 +78,10 @@
           <select class="form-select mb-3" name="carrera" id="carrera" required>
             <option selected value="{{ $expediente->carrera }}">{{ $expediente->carrera }}</option>
           </select>
+          <div class="d-flex flex-column align-items-center mb-4">
+            <img class="logo mb-3" src="{{ asset($fotoPerfil) }}" alt="foto perfil">
+            <input class="form-control" name="foto" type="text" value="{{ $expediente->foto }}" readonly>
+          </div>
          <!-- <label for="foto">Subir fotografía</label>
           <input class="form-control mb-3" type="file" name="foto" id="foto"> -->
         </div>

@@ -18,8 +18,6 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <h6 class="fw-light me-3">Usuario</h6>
-          <h6 class="fw-light me-3">Correo</h6>
           <button class="btn btn-primary"><a class="me-3 text-white" href="{{ route('logout') }}">Log out</a></button>
         </div>
       </nav>
@@ -30,7 +28,9 @@
       <h3>Establecer matrícula</h3>
     </div>
     <div>
-      <form action="#" method="post" class="form mb-5 d-flex flex-column p-8">
+      <form action="{{ route('empleado.establecer.matricula') }}" method="post" class="form mb-5 d-flex flex-column p-8">
+        @method('post')
+        @csrf
         <label for="primer">Seleccione el día de comienzo</label>
         <input class="form-control mb-3" type="date" id="primer" name="primerDia" placeholder="Selecciona día de comienzo">
         <label for="ultimo">Selecione el último día</label>
@@ -39,6 +39,15 @@
         <input class="form-control mb-3" type="time" id="horaComienzo" name="horaComienzo">
         <label for="horaFinal">Seleccione última hora de acceso</label>
         <input class="form-control mb-3" type="time" id="horaFinal" name="horaFinal">
+        <label for="anio">Año académico</label>
+        <input type="text" id="anio" class="form-control" placeholder="Año" name="anio">
+        <label for="periodo">Periodo académico</label>
+        <select name="periodo" id="periodo">
+          <option selected>Periodo</option>
+          <option value="I">I periodo</option>
+          <option value="II">II periodo</option>
+          <option value="III">III periodo</option>
+        </select>
         <button class="btn btn-primary">Guardar</button>
         <!--TODO: agregar opcion para mandarlo al server -->
       </form>

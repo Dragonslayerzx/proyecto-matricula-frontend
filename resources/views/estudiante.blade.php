@@ -19,7 +19,7 @@
         </div>
         <div class="d-flex align-items-center">
           <a class="fw-light me-3" href=" {{ route('estudiante.perfil')}} ">Perfil</a>
-          <button class="btn btn-danger me-3" onclick="logOut()">
+          <button class="btn btn-danger me-3" onclick="clearStorage()">
             <a class="text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
         </div>
       </nav>
@@ -33,7 +33,11 @@
         <div class="card-body">
           <div class="row">
             <div class="col-md-6">
-              <h5 class="card-title mt-5">¡Bienvenido Estudiante!</h5>
+              @if ($alumno->sexo)
+              <h5 class="card-title mt-5">¡Bienvenido {{ $alumno->nombre }}!</h5>
+              @else
+              <h5 class="card-title mt-5">¡Bienvenida {{ $alumno->nombre }}!</h5>
+              @endif
               <p class="card-text mt-4">Sistema de gestión de matrícula</p>
             </div>  
             <div class="col-md-6">
@@ -83,6 +87,22 @@
     <span class="text-muted">© 2024 Tuition 03</span>
   </div>
 </footer>
-<script src="{{ asset("js/loginEstudiante.js") }}"></script>
+<!-- <script src="{{ asset("js/loginEstudiante.js") }}"></script> -->
+{{-- <script>
+  userStorage = window.localStorage
+  function saveLoginInfo(cuenta, passw) {
+    if (null == userStorage.getItem('isLog')) {
+      userStorage.setItem('isLog', 'true')
+      userStorage.setItem('numeroCuenta', cuenta)
+      userStorage.setItem('contrasena', passw)
+    }
+  }
+
+  saveLoginInfo($alumno->numeroCuenta, $alumno->contrasena)
+
+  function clearStorage() {
+    userStorage.clear()
+  }
+</script> --}}
 </body>
 </html>
