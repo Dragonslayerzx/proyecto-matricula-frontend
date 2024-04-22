@@ -28,14 +28,16 @@
   </div>
   <main class="d-flex justify-content-center align-items-center mt-2">
     <section class="d-flex ms-5">
-      <form action="#" class="d-flex flex-column justify-content-around p-5 form">
+      <form action=" {{ route('docente.verificar.login') }}" method="post" class="d-flex flex-column justify-content-around p-5 form">
+        @method('post')
+        @csrf
         <div class="d-flex flex-column align-items-center justify-content-center">
           <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div> 
         <input class="form-control mb-3" type="text" placeholder="No. Clave" name="clave">
         <input class="form-control mb-3" type="password" placeholder="contraseña" name="contrasena">
-        <button class="btn btn-primary">Entrar</button>
+        <input type="submit" value="Entrar" class="btn btn-primary">
       </form> 
     </section>
     <section class="ms-1">

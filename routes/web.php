@@ -45,9 +45,10 @@ Route::get('/estudiante/historial',[EstudianteController::class, 'verHistorial']
 Route::get('/estudiante/matricula/{id}', [EstudianteController::class, 'verPaginaMatricula'])->name('estudiante.matricula');
 // docente
 Route::get('/docente/login', [DocenteController::class, 'docenteLogin'])->name('docente.login');
+Route::post('/docente/login/validar', [DocenteController::class, 'verificarLogin'])->name('docente.verificar.login');
 Route::get('/docente/home',  [DocenteController::class, 'vistaPrincipalDocente'])->name('docente.home');
 Route::get('/docente/logout',[DocenteController::class, 'logout'])->name('docente.logout');
-Route::get('/docente/clases',[DocenteController::class, 'verClases'])->name('docente.verClases');
+Route::get('/docente/clases/{idDocente}',[DocenteController::class, 'verClases'])->name('docente.verClases');
 Route::get('/docente/vercurso/{idSeccion}',[DocenteController::class, 'verCurso'])->name('docente.ver.curso');
 Route::get('/docente/perfil',[DocenteController::class, 'docentePerfil'])->name('docente.perfil');
 Route::get('/docente/perfil/editar', [DocenteController::class,'editarPerfil'])->name('docente.editar.perfil');
@@ -57,7 +58,7 @@ Route::post('/docente/verificar/login', [DocenteController::class, 'verificarLog
 //docente (coordinador)
 Route::get('coordinador/home', [DocenteController::class, 'cordiHome'])->name('coordinador.home');
 Route::get('coordinador/perfil', [DocenteController::class, 'cordiPerfil'])->name('coordinador.perfil');
-Route::get('coordinador/clases', [DocenteController::class, 'cordiClases'])->name('coordinador.clases');
+Route::get('coordinador/clases/{idDocente}', [DocenteController::class, 'cordiClases'])->name('coordinador.clases');
 Route::get('coordinador/vercurso/{idSeccion}', [DocenteController::class,'cordiVerCurso'])->name('coordinador.ver.curso');
 Route::get('coordinador/planificacion', [DocenteController::class, 'cordiPlan'])->name('coordinador.planificacion');
 Route::get('coordinador/seccion/crear', [DocenteController::class, 'crearSeccion'])->name('coordinador.crear.seccion');

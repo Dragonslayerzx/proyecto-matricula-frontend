@@ -27,6 +27,7 @@
 </div>
 
 <!-- Contenido principal -->
+
 <div class="container">
     <div class="col">
       <div class="card text-center">
@@ -61,7 +62,7 @@
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Clases</h5>
           <p class="card-text mt-3">Explora las clases asignadas</p>
-          <a href="{{route('coordinador.clases')}}" class="btn btn-primary mt-3">Ir a Clases</a>
+          <a href="{{route('coordinador.clases', $docente['numeroCuenta'])}}" class="btn btn-primary mt-3">Ir a Clases</a>
         </div>
       </div>
     </div>

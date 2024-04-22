@@ -93,7 +93,7 @@
     <span class="text-muted">© 2024 Tuition 03</span>
   </div>
 </footer>
-<!-- <script src="{{ asset("js/loginEstudiante.js") }}"></script> -->
+<!-- <script src="{{ asset("js/loginEstudiante.js") }}"></script>
 {{-- <script>
   userStorage = window.localStorage
   function saveLoginInfo(cuenta, passw) {
@@ -109,6 +109,6 @@
   function clearStorage() {
     userStorage.clear()
   }
-</script> --}}
+</script> --}} -->
 </body>
 </html>
