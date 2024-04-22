@@ -35,17 +35,17 @@
 <div class="container radius">
   <div class="row">
 
-    @foreach ($clases as $clase)
+    @foreach ($cardSeccion as $clase)
     <div class="col-lg-4">
       <div class="card mb-5 rounded mx-auto" style="width: 18rem;">
         <img src="{{ asset('img/clases.png') }}" class="card-img-top" alt="clases logo">
         <div class="card-body px-5">
-          <h3 class="card-title fw-light">{{$clase['nombre']}}</h3>
-          <h6>Código: <span class="fw-bold">{{$clase['codigo']}}</span></h6>
-          <h6>Sección: <span class="fw-bold">{{$clase['seccion']}}</span></h6>
-          <h6>UV: <span class="fw-bold">{{$clase['uv']}}</span></h6>
+          <h3 class="card-title fw-light">{{ $clase->nombre }}</h3>
+          <h6>Código: <span class="fw-bold">{{$clase->codigo}}</span></h6>
+          <h6>Sección: <span class="fw-bold">{{$clase->idseccion}}</span></h6>
+          <h6>UV: <span class="fw-bold">{{$clase->uv}}</span></h6>
           <div class="text-center mt-3">
-          <a class="btn btn-primary" href="{{ route('docente.ver.curso',$clase['seccion'] )}}">Ver curso</a>
+          <a class="btn btn-primary" href="{{ route('docente.ver.curso', $clase->idseccion )}}">Ver curso</a>
           </div>
         </div>
       </div>
