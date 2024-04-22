@@ -21,8 +21,8 @@
         <div class="d-flex align-items-center">
           <a class="fw-light me-3" href="{{ route('docente.perfil') }}">Perfil</a>
           <a class="fw-light me-3" href="{{ route('docente.home')}}">Home</a>
-          <button class="btn btn-danger">
-            <a class="me-3 text-white" href="{{ route('docente.logout') }}">Log out</a></button>
+          <button class="btn btn-danger me-3">
+            <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
       </nav>
     </head>    
@@ -34,32 +34,27 @@
 </div>  
 <div class="container radius">
   <div class="row">
+
+    @foreach ($cardSeccion as $clase)
     <div class="col-lg-4">
-      <div class="card mb-5 rounded" style="width: 18rem;">
+      <div class="card mb-5 rounded mx-auto" style="width: 18rem;">
         <img src="{{ asset('img/clases.png') }}" class="card-img-top" alt="clases logo">
-        <div class="card-body">
-          <h3 class="card-title fw-light">NOMBRE DE CLASE</h3>
-          <h6>Código: <span class="fw-bold">001</span></h6>
-          <h6>Sección: <span class="fw-bold">1300</span></h6>
-          <h6>UV: <span class="fw-bold">3</span></h6>
-          <button class="btn btn-primary"><a class="text-white" href="#" class="btn btn-primary">Ver curso</a></button>
+        <div class="card-body px-5">
+          <h3 class="card-title fw-light">{{ $clase->nombre }}</h3>
+          <h6>Código: <span class="fw-bold">{{$clase->codigo}}</span></h6>
+          <h6>Sección: <span class="fw-bold">{{$clase->idseccion}}</span></h6>
+          <h6>UV: <span class="fw-bold">{{$clase->uv}}</span></h6>
+          <div class="text-center mt-3">
+          <a class="btn btn-primary" href="{{ route('docente.ver.curso', $clase->idseccion )}}">Ver curso</a>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-4">
-      <div class="card mb-5 rounded" style="width: 18rem;">
-        <img src="{{ asset('img/clases.png') }}" class="card-img-top" alt="clases logo">
-        <div class="card-body">
-          <h3 class="card-title fw-light">NOMBRE DE CLASE</h3>
-          <h6>Código: <span class="fw-bold">001</span></h6>
-          <h6>Sección: <span class="fw-bold">1300</span></h6>
-          <h6>UV: <span class="fw-bold">3</span></h6>
-          <button class="btn btn-primary"><a class="text-white" href="#" class="btn btn-primary">Ver curso</a></button>
-        </div>
-      </div>
-    </div>
+    @endforeach
+  
   </div>
 </div>
+
 
 <!-- Footer -->
 <footer class="footer mt-5 py-3">

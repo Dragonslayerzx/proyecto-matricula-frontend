@@ -31,7 +31,7 @@
       <h3>Registro de carrera</h3>
     </section>
     <section class="d-flex mb-3">
-      <form action="{{ route('expediente.mandar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
+      <form action="{{ route('carrera.guardar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
         @csrf
         @method('post')
         <div class="d-flex flex-column align-items-center justify-content-center my-2">
@@ -45,13 +45,12 @@
           <select class="form-select mb-4" name="coordinador" id="coordinador">
             <option selected>coordinador</option>
             @foreach ($coordinadores as $coordinador)
-              <option value="{{ $coordinador }}">{{ $coordinador }}</option>
+              <option value="{{ $coordinador->numeroCuenta }}">{{ $coordinador->nombre }}</option>
             @endforeach
           </select>
         </div>
         <div class="d-flex justify-content-center align-items-center">
           <button class="btn btn-primary me-3">Crear</button>
-          <button class="btn btn-danger">Eliminar</button>
         </div>
       </form> 
     </section>

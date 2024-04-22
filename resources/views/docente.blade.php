@@ -19,8 +19,8 @@
         </div>
         <div class="d-flex align-items-center">
           <a class="fw-light me-3" href=" {{ route('docente.perfil')}} ">Perfil</a>
-          <button class="btn btn-danger">
-            <a class="me-3 text-white" href="{{ route('docente.logout') }}">Log out</a></button>
+          <button class="btn btn-danger me-3">
+            <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
       </nav>
     </head>
@@ -34,11 +34,11 @@
           <div class="row">
             <div class="col-md-6">
               <h5 class="card-title mt-5">¡Bienvenido Docente!</h5>
-              <p class="card-text mt-4">Sistema de gestión de matricula</p>
+              <p class="card-text mt-4">Sistema de gestión de matrícula</p>
             </div>  
             <div class="col-md-6">
               <div class="card-img">
-                <img src="{{ asset('img/docenteHome.png') }}" alt="docenteHome" class="img-fluid"  width="200">
+                <img src="{{ asset('img/docenteHome.png') }}" alt="docenteHome" class="img-fluid"  width="200px">
               </div>
             </div>
           </div>
@@ -47,30 +47,21 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="card">
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Clases</h5>
           <p class="card-text mt-3">Explora las clases asignadas</p>
-          <a href="{{ route('docente.verClases') }}" class="btn btn-primary mt-3">Ir a Clases</a>
+          <a href="{{ route('docente.verClases', $docente['numeroCuenta']) }}" class="btn btn-primary mt-3">Ir a Clases</a>
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body text-center">
-          <h5 class="card-title mt-3">Notas</h5>
-          <p class="card-text mt-3">Consulta notas y calificaciones</p>
-          <a href="#" class="btn btn-primary mt-3">Ir a Notas</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="card">
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Historial</h5>
           <p class="card-text mt-3">Revisa tu historial de clases</p>
-          <a href="#" class="btn btn-primary mt-3">Ir a Historial</a>
+          <a href="{{route('docente.historial')}}" class="btn btn-primary mt-3">Ir a Historial</a>
         </div>
       </div>
     </div>

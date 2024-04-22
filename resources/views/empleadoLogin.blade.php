@@ -31,7 +31,9 @@
       <img src="{{ asset('img/empleado.png') }}" alt="autenticación logo">
     </section>
     <section class="d-flex">
-      <form action="#" class="d-flex flex-column justify-content-around p-5 form">
+      <form action="{{ route('empleado.login.verificar') }}" method="post" class="d-flex flex-column justify-content-around p-5 form">
+        @method('post')
+        @csrf
         <div class="d-flex flex-column align-items-center justify-content-center">
           <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
           <h3>Tuition<span class="text-orange">03</span></h3>

@@ -9,6 +9,7 @@
     <title>home</title>
 </head>
 <body class="page mx-auto">
+
 <!-- Barra de navegación -->
 <div class="mb-4">
     <head>
@@ -19,17 +20,70 @@
         </div>
         <div class="d-flex align-items-center">
           <a class="fw-light me-3" href="{{ route('docente.home')}}">Home</a>
-          <button class="btn btn-danger">
-            <a class="me-3 text-white" href="{{ route('docente.logout') }}">Log out</a></button>
+          <button class="btn btn-danger me-3">
+            <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
       </nav>
     </head>
 </div>
 
 <!-- Contenido principal -->
-<div class="container mt-5 text-center">
-    <h1><b>Perfil de Usuario</b></h1>
+<h1 class="text-center"><b>Perfil de Docente</b></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <h2 class="mt-5 text-center">Información del Docente</h2>
+            <table class="table table-bordered mt-5" style="border-color: #a6b3bf;">
+                <tbody>
+                    <tr>
+                        <th>Numero de cuenta</th>
+                        <td>{{$usuario['cuenta']}}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{$usuario['nombre']}}</td>
+                    </tr>
+                    <tr>
+                        <th>Apellido</th>
+                        <td>{{$usuario['apellido']}}</td>
+                    </tr>
+                    <tr>
+                        <th>Sexo</th>
+                        <td>{{$usuario['sexo']}}</td>
+                    </tr>
+                    <tr>
+                        <th>Direccion</th>
+                        <td>{{$usuario['direccion']}}</td>
+                    </tr>
+                    <tr>
+                        <th>Correo</th>
+                        <td>{{$usuario['email']}}</td>
+                    </tr>
+                    <tr>
+                        <th>Especializacion</th>
+                        <td>{{$usuario['especializacion']}}</td>
+                    </tr>
+                    <tr>
+                        <th>Cargo</th>
+                        <td>Docente</td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de Contratacion</th>
+                        <td>{{$usuario['fechaContrato']->format('Y-m-d')}}</td>
+                    </tr>
+                </tbody>
+            </table>
 
+            <div class="mt-4 text-center">
+              <a href="{{route('docente.editar.perfil')}}" class="btn btn-warning">Cambio de clave</a>
+            </div>
+        </div>
+        <div class="col-md-5 text-center">
+            <h2 class="mt-5 text-center">Foto de Perfil</h2>
+            <img src="{{ asset('img/beanhead.svg')}}" alt="fotoPerfil" class="img-fluid" style="margin-top: -8vh; max-width: 450px;">
+        </div>
+    </div>
+</div>
 
 </div>
 

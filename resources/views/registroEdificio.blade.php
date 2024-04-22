@@ -17,7 +17,7 @@
         <h3 class="mt-3">Tuition<span class="text-orange">03</span></h3>
           <img class="logo" src="{{ asset('img/logo.png') }}" alt="logo">
         </div>
-       <!-- <div class="d-flex align-items-center">
+        <!-- <div class="d-flex align-items-center">
           <a class="me-3" href="{{ route('estudiante.login') }}">Estudiantes</a>
           <a class="me-3" href="{{ route('docente.login') }}">Docentes</a>
           <a class="me-3" href="{{ route('empleado.login') }}">Empleados</a>
@@ -31,7 +31,7 @@
       <h3>Registro de edificio</h3>
     </section>
     <section class="d-flex mb-3">
-      <form action="{{ route('expediente.mandar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
+      <form action="{{ route('edificio.guardar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
         @csrf
         @method('post')
         <div class="d-flex flex-column align-items-center justify-content-center my-2">
@@ -41,15 +41,17 @@
         <div class="d-flex flex-column justify-content-center">
           <label class="form-label" for="edificio">Edificio</label>
           <input class="form-control mb-4" type="text" id="edificio" name="nombreEdificio" placeholder="Nombre del edificio">
-          <label class="form-label" for="salon">Salones</label>
-          <input class="form-control mb-4" type="number" name="numeroSalones" id="salon" placeholder="Numero de salones" min="1">
+          <label class="form-label" for="salon">Pisos</label>
+          <input class="form-control mb-4" type="number" name="numeroPisos" id="salon" placeholder="Numero de pisos" min="1" max="15">
         </div>
         <div class="d-flex justify-content-center align-items-center">
           <button class="btn btn-primary me-3">Crear</button>
-          <button class="btn btn-danger">Eliminar</button>
         </div>
       </form> 
     </section>
+    <div class="mx-auto mb-5 d-flex justify-content-center">
+      <button class="btn btn-primary"><a class="me-3 text-white" href="{{ route('empleado.home') }}">Ir a HOME</a></button>
+    </div>
    <!-- <section class="ms-1">
       <img src="{{ asset('img/docente.png') }}" alt="autenticación logo">
     </section> -->
