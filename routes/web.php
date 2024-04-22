@@ -48,6 +48,7 @@ Route::get('/docente/login', [DocenteController::class, 'docenteLogin'])->name('
 Route::get('/docente/home',  [DocenteController::class, 'vistaPrincipalDocente'])->name('docente.home');
 Route::get('/docente/logout',[DocenteController::class, 'logout'])->name('docente.logout');
 Route::get('/docente/clases',[DocenteController::class, 'verClases'])->name('docente.verClases');
+Route::get('/docente/vercurso/{idSeccion}',[DocenteController::class, 'verCurso'])->name('docente.ver.curso');
 Route::get('/docente/perfil',[DocenteController::class, 'docentePerfil'])->name('docente.perfil');
 Route::get('/docente/perfil/editar', [DocenteController::class,'editarPerfil'])->name('docente.editar.perfil');
 Route::put('/docente/perfil/cambiarClave', [DocenteController::class,'cambiarClave'])->name('docente.cambiar.clave');
@@ -55,6 +56,12 @@ Route::get('/docente/historial', [DocenteController::class, 'verHistorial'])->na
 Route::post('/docente/verificar/login', [DocenteController::class, 'verificarLoginDocente'])->name('docente.login.verificar');
 //docente (coordinador)
 Route::get('coordinador/home', [DocenteController::class, 'cordiHome'])->name('coordinador.home');
+Route::get('coordinador/perfil', [DocenteController::class, 'cordiPerfil'])->name('coordinador.perfil');
+Route::get('coordinador/clases', [DocenteController::class, 'cordiClases'])->name('coordinador.clases');
+Route::get('coordinador/vercurso/{idSeccion}', [DocenteController::class,'cordiVerCurso'])->name('coordinador.ver.curso');
 Route::get('coordinador/planificacion', [DocenteController::class, 'cordiPlan'])->name('coordinador.planificacion');
 Route::get('coordinador/seccion/crear', [DocenteController::class, 'crearSeccion'])->name('coordinador.crear.seccion');
 Route::post('coordinador/seccion', [DocenteController::class,'guardarSeccion'])->name('coordinador.guardar.seccion');
+Route::get('coordinador/seccion/editar/{idSeccion}', [DocenteController::class,'editarSeccion'])->name('coordinador.editar.seccion');
+Route::put('coordinador/seccion/actualizar/{idSeccion}', [DocenteController::class,'actualizarSeccion'])->name('coordinador.actualizar.seccion');
+Route::get('coordinador/historial', [DocenteController::class,'cordiHistorial'])->name('coordinador.historial');

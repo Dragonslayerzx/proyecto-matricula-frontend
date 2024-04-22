@@ -19,8 +19,8 @@
         </div>
         <div class="d-flex align-items-center">
           <a class="fw-light me-3" href=" {{ route('docente.perfil')}} ">Perfil</a>
-          <button class="btn btn-danger">
-            <a class="me-3 text-white" href="{{ route('docente.logout') }}">Log out</a></button>
+          <button class="btn btn-danger me-3">
+            <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
       </nav>
     </head>
@@ -47,7 +47,7 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="card">
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Clases</h5>
@@ -56,16 +56,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
-      <div class="card">
-        <div class="card-body text-center">
-          <h5 class="card-title mt-3">Notas</h5>
-          <p class="card-text mt-3">Asigna calificaciones</p>
-          <a href="#" class="btn btn-primary mt-3">Ir a Notas</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="card">
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Historial</h5>

@@ -18,7 +18,7 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href="{{ route('docente.perfil') }}">Perfil</a>
+          <a class="fw-light me-3" href="{{ route('coordinador.perfil') }}">Perfil</a>
           <button class="btn btn-danger me-3">
             <a class="text-white" href="{{ route('docente.logout') }}">Log out</a></button>
         </div>
@@ -42,11 +42,11 @@
         </div>
         <div class="mb-3">
             <label for="hora_inicio" class="form-label">Hora de Inicio:</label>
-            <input type="time" class="form-control" id="hora_inicio" name="hora_inicio">
+            <input type="time" class="form-control" id="hora_inicio" name="hora_inicio" step="3600">
         </div>
         <div class="mb-3">
             <label for="hora_fin" class="form-label">Hora de Inicio:</label>
-            <input type="time" class="form-control" id="hora_fin" name="hora_fin">
+            <input type="time" class="form-control" id="hora_fin" name="hora_fin" step="3600">
         </div>
         <div class="mb-3">
             <label for="docente_id" class="form-label">Docente:</label>
