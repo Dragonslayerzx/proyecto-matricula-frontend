@@ -2,7 +2,57 @@ const selectFormCarreras = document.getElementById('carreras')
 const selectFormClases = document.getElementById('clases')
 const cardContainer = document.getElementById('card-container')
 
+async function fetchCarreras() {
+  const data = fetch('http://localhost:8080/api/matricula/carreras/obtener', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    } 
+  })
+
+  const carreras = (await data).json()
+  return carreras
+}
+
 async function fetchClasesPorCarrera(idCarrera) {
+  try {
+    const data = await fetch(`http://localhost:8080/api/matricula/carreras/${idCarrera}/clases`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      } 
+    });
+    const clases = await data.json();
+    return clases;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+}
+selectFormCarreras.addEventListener('change', async () => {
+  const carreraValue = selectFormCarreras.value;
+  selectFormClases.innerHTML = '';
+  
+  try {
+    const carreras = await fetchCarreras();
+    const objetoCarrera = carreras.find(res => res.idCarrera == carreraValue);
+    
+    // Aquí esperamos a que se resuelva la promesa de fetchClasesPorCarrera
+    const clases = await fetchClasesPorCarrera(objetoCarrera.idCarrera);
+
+    clases.forEach(clase => {
+      selectFormClases.innerHTML += `
+        <option value="${clase.idClase}">${clase.nombre}</option>
+      `;
+    });
+  } catch (error) {
+    console.error('Error al procesar el cambio de selección de carrera:', error);
+    // Aquí puedes manejar el error de manera apropiada, como mostrar un mensaje al usuario.
+  }
+});
+
+// --------------------------------
+/* async function fetchClasesPorCarrera(idCarrera) {
   try {
     const data = fetch(`http://localhost:8080/api/matricula/carreras/${idCarrera}/clases`, {
       method: 'GET',
@@ -11,7 +61,7 @@ async function fetchClasesPorCarrera(idCarrera) {
       } 
     })
     const clases = (await data).json()
-    return JSON.stringify(clases)
+    return clases
   } catch(e) {
     console.log(e)
   }
@@ -26,7 +76,7 @@ async function fetchCarreras() {
   })
 
   const carreras = (await data).json()
-  return JSON.stringify(carreras)
+  return carreras
 }
 
 selectFormCarreras.addEventListener('change', async () => {
@@ -35,17 +85,17 @@ selectFormCarreras.addEventListener('change', async () => {
   
   const carreras = await fetchCarreras()
   const objetoCarrera = carreras.find(res => res.idCarrera == carreraValue)
-  const clases = objetoCarrera.clases
+  const clases = await fetchClasesPorCarrera(objetoCarrera.idCarrera)
   console.log(clases)
   alert(JSON.stringify(clases))
   const arr = JSON.stringify(clases).
 
-  arr.forEach(clase => {
+  clases.forEach(clase => {
     selectFormClases.innerHTML += `
     <option value="${clase.idClase}">${clase.nombre}</option>
     `
   })
-})
+}) */
 /* const objectResponse = [
   
   {
