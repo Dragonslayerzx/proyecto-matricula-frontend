@@ -71,7 +71,7 @@
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Forma 03</h5>
           <p class="card-text mt-3">Ver tus clases matriculadas</p>
-          <a href="{{route('estudiante.forma03')}}" class="btn btn-primary mt-3">Ir a Notas</a>
+          <a href="{{route('estudiante.forma03', $alumno->numeroCuenta )}}" class="btn btn-primary mt-3">Ir a Notas</a>
         </div>
       </div>
     </div>

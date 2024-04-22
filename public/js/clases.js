@@ -2,7 +2,51 @@ const selectFormCarreras = document.getElementById('carreras')
 const selectFormClases = document.getElementById('clases')
 const cardContainer = document.getElementById('card-container')
 
-const objectResponse = [
+async function fetchClasesPorCarrera(idCarrera) {
+  try {
+    const data = fetch(`http://localhost:8080/api/matricula/carreras/${idCarrera}/clases`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      } 
+    })
+    const clases = (await data).json()
+    return JSON.stringify(clases)
+  } catch(e) {
+    console.log(e)
+  }
+}
+
+async function fetchCarreras() {
+  const data = fetch('http://localhost:8080/api/matricula/carreras/obtener', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    } 
+  })
+
+  const carreras = (await data).json()
+  return JSON.stringify(carreras)
+}
+
+selectFormCarreras.addEventListener('change', async () => {
+  const carreraValue = selectFormCarreras.value
+  selectFormClases.innerHTML = ''
+  
+  const carreras = await fetchCarreras()
+  const objetoCarrera = carreras.find(res => res.idCarrera == carreraValue)
+  const clases = objetoCarrera.clases
+  console.log(clases)
+  alert(JSON.stringify(clases))
+  const arr = JSON.stringify(clases).
+
+  arr.forEach(clase => {
+    selectFormClases.innerHTML += `
+    <option value="${clase.idClase}">${clase.nombre}</option>
+    `
+  })
+})
+/* const objectResponse = [
   
   {
     clase: "POO",
@@ -70,4 +114,4 @@ selectFormClases.addEventListener('change', () => {
     `
   })
   
-})
+}) */

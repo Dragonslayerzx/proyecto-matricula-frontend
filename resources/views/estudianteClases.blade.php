@@ -19,7 +19,7 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href="{{ route('estudiante.perfil') }}">Perfil</a>
+          <a class="fw-light me-3" href="{{ route('estudiante.perfil', $alumno->numeroCuenta ) }}">Perfil</a>
           <a class="fw-light me-3" href="{{ route('estudiante.home')}}">Home</a>
           <button class="btn btn-danger" onclick="logOut()">
             <a class="me-3 text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
@@ -34,6 +34,7 @@
 </div>  
 <div class="container radius">
   <div class="row">
+    @foreach ($alumnoClases as $clase)
     <div class="col-lg-4">
       <div class="card mb-5 rounded" style="width: 18rem;">
         <img src="{{ asset('img/clases.png') }}" class="card-img-top" alt="clases logo">
@@ -45,19 +46,8 @@
           <button class="btn btn-primary"><a class="text-white" href="#" class="btn btn-primary">Ver curso</a></button>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="card mb-5 rounded" style="width: 18rem;">
-        <img src="{{ asset('img/clases.png') }}" class="card-img-top" alt="clases logo">
-        <div class="card-body">
-          <h3 class="card-title fw-light">NOMBRE DE CLASE</h3>
-          <h6>Código: <span class="fw-bold">001</span></h6>
-          <h6>Sección: <span class="fw-bold">1300</span></h6>
-          <h6>UV: <span class="fw-bold">3</span></h6>
-          <button class="btn btn-primary"><a class="text-white" href="#" class="btn btn-primary">Ver curso</a></button>
-        </div>
-      </div>
-    </div>
+    </div>    
+    @endforeach
   </div>
 </div>
 

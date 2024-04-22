@@ -37,7 +37,7 @@ Route::post('/expediente/mandar', [EstudianteController::class, 'mandarExpedient
 Route::get('/estudiante/formulario/enviado', [EstudianteController::class, 'formularioEnviado'])->name('formulario.enviado');
 Route::get('/estudiante/home', [EstudianteController::class,'vistaPrincipalEstudiante'])->name('estudiante.home');
 Route::get('/estudiante/logout', [EstudianteController::class, 'estudianteLogout'])->name('estudiante.logout');
-Route::get('/estudiante/forma03', [EstudianteController::class,'verForma03'])->name('estudiante.forma03');
+Route::get('/estudiante/forma03/{id}', [EstudianteController::class,'verForma03'])->name('estudiante.forma03');
 Route::get('/estudiante/perfil/{id}', [EstudianteController::class, 'estudiantePerfil'])->name('estudiante.perfil');
 Route::get('/estudiante/perfil/editar', [EstudianteController::class, 'editarPerfil'])->name('estudiante.editar.perfil');
 Route::put('/estudiante/perfil/cambiarClave', [EstudianteController::class, 'cambiarClave'])->name('estudiante.cambiar.clave');

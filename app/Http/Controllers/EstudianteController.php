@@ -149,8 +149,16 @@ class EstudianteController extends Controller
         return view('estudiante');
     }
 
-    public function verForma03(){
-        return view('estudianteClases');
+    public function verForma03($id) {
+        $client = new Client();
+        $endpointGetAlumnoPorId = 'http://localhost:8080/api/alumnos/' . $id;
+        $res = $client->get($endpointGetAlumnoPorId);
+        $alumno = json_decode($res->getBody());
+
+        $endpointObtenerClases = 'http://localhost:8080/api/matricula/clases/matriculadas/' . $id;
+        $clases = $client->get($endpointObtenerClases);
+        $alumnoClases = json_decode($clases->getBody());
+        return view('estudianteClases', compact('alumno', 'alumnoClases'));
     }
 
     public function estudianteLogout() {
@@ -196,9 +204,9 @@ class EstudianteController extends Controller
         $client = new Client();
 
         $obtenerCarrerasEndpoint = 'http://localhost:8080/api/matricula/carreras/obtener';
-        $carreras = $client->get($obtenerCarrerasEndpoint);
+        $carreras = json_decode($client->get($obtenerCarrerasEndpoint)->getBody());
 
-        $clases = ['MM110', "POO", "MM201", "PS-314", "Resistencia de materiales", "Sentimientos I"];
+        /* $clases = ['MM110', "POO", "MM201", "PS-314", "Resistencia de materiales", "Sentimientos I"];
         $docentes = [[
 
             "nombreClase" => "Lenguajes de Programación",
@@ -226,10 +234,15 @@ class EstudianteController extends Controller
                 
             ]
         ];
-
+ */
         $alumnoEndpoint = 'http://localhost:8080/api/alumnos/' . $id;
         $res = $client->get($alumnoEndpoint);
         $alumno = json_decode($res->getBody());
+        $getCarrerasEndpoint = 'http://localhost:8080/api/matricula/clases/obtener';
+        $clasesRes = $client->get($getCarrerasEndpoint);
+        $clases = json_decode($clasesRes->getBody());
+        $docenteEndpoint = 'http://localhost:8080/api/matricula/docentes/obtener';
+        $docentes = json_decode($client->get($docenteEndpoint)->getBody());
         return view('matricula', compact('carreras', 'clases', 'docentes', 'alumno'));
     }
 

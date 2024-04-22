@@ -34,7 +34,7 @@
           <select name="Carrera" id="carreras" class="form-select">
             <option selected>Carreras</option>
             @foreach ($carreras as $carrera)
-              <option value="{{ $carrera }}">{{ $carrera }}</option>
+              <option value="{{ $carrera->idCarrera }}">{{ $carrera->nombre }}</option>
             @endforeach
           </select>
         </div>
