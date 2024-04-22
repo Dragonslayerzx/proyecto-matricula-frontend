@@ -4,11 +4,54 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class DocenteController extends Controller
 {
     public function docenteLogin() {
         return view('docenteLogin');
+    }
+
+    public function verificarLogin(Request $req) {
+        //se obtienen datos del form
+        $clave = $req->input('clave');
+        $contrasena = $req->input('contrasena');
+
+        //Se crea un cliente guzzle
+        $client = new Client();
+
+        // se contruye el cuerpo en formato json
+        $body = json_encode([
+            'clave' => $clave,
+            'contrasena' => $contrasena
+        ]);
+
+        //encabezados de la solicitud
+        $headers = ['Content-Type' => 'application/json'];
+
+        //se realiza solicitud POST
+        $endpoint = 'http://localhost:8080/api/matricula/docente/verificacion';
+        $res = $client->post($endpoint, [
+            'headers' => $headers,
+            'body' => $body
+        ]);
+        if (json_decode($res->getBody())) {
+            $obtenerDocenteEndpoint = 'http://localhost:8080/api/matricula/docente/obtener/' . $clave;
+            $res = $client->get($obtenerDocenteEndpoint);
+            // Decodificamos la respuesta como un array asociativo
+            $docente = json_decode($res->getBody(), true); // Decodificamos la respuesta como un array asociativo
+
+            // Verificamos si el docente es coordinador
+            $esCoordinador = $docente['coordinador'] ?? false;
+        
+            // Redirigimos a la vista correspondiente dependiendo de si es coordinador o no
+            if ($esCoordinador) {
+                return redirect()->route('coordinador.home')->with('docente', $docente);
+            } else {
+                return redirect()->route('docente.home')->with('docente', $docente);
+            }
+        }
+        return redirect()->route('docente.login');
     }
 
     public function vistaPrincipalDocente(){
@@ -25,7 +68,13 @@ class DocenteController extends Controller
             ['nombre' => 'POO', 'codigo' => 'IS-410', 'seccion' =>'1600', 'uv' => '5'], 
             ['nombre' => 'Circuitos', 'codigo' => 'IS-311', 'seccion' =>'1700', 'uv' => '3'] 
         ];
-        return view('docenteClases', compact('clases'));
+
+        $client = new Client();
+        $endpointSeccionesDocente = 'http://localhost:8080/api/matricula/clases/secciones/123456789';
+        $res = $client->get($endpointSeccionesDocente);
+        $cardSeccion = json_decode($res->getBody());
+
+        return view('docenteClases', compact('clases', 'cardSeccion'));
     }
 
     public function verCurso($idSeccion){
@@ -107,6 +156,8 @@ class DocenteController extends Controller
     }
 
     public function cordiClases(){
+
+
         $clases = [
             ['nombre' => 'Calculo 2', 'codigo' => 'MM202', 'seccion' =>'1500', 'uv' => '5'], 
             ['nombre' => 'POO', 'codigo' => 'IS-410', 'seccion' =>'1600', 'uv' => '5'], 

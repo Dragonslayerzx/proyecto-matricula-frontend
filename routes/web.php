@@ -43,6 +43,7 @@ Route::get('/estudiante/historial',[EstudianteController::class, 'verHistorial']
 Route::get('/estudiante/matricula', [EstudianteController::class, 'verPaginaMatricula'])->name('estudiante.matricula');
 // docente
 Route::get('/docente/login', [DocenteController::class, 'docenteLogin'])->name('docente.login');
+Route::post('/docente/login/validar', [DocenteController::class, 'verificarLogin'])->name('docente.verificar.login');
 Route::get('/docente/home',  [DocenteController::class, 'vistaPrincipalDocente'])->name('docente.home');
 Route::get('/docente/logout',[DocenteController::class, 'logout'])->name('docente.logout');
 Route::get('/docente/clases',[DocenteController::class, 'verClases'])->name('docente.verClases');
