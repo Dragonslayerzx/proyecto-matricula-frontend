@@ -9,7 +9,11 @@
     <title>home</title>
 </head>
 <body class="page mx-auto">
-
+<?php
+  $fotoPath = $alumno->foto;
+  $fotoSplit = explode('/', $fotoPath);  
+  $fotoName = $fotoSplit[count($fotoSplit) - 1];
+?>
 <!-- Barra de navegación -->
 <div class="mb-4">
     <head>
@@ -19,7 +23,6 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href="{{ route('estudiante.home')}}">Home</a>
           <button class="btn btn-danger" onclick="logOut()">
             <a class="me-3 text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
         </div>
@@ -37,31 +40,35 @@
                 <tbody>
                     <tr>
                         <th>Numero de cuenta</th>
-                        <td>{{$alumno['cuenta']}}</td>
+                        <td>{{ $alumno->numeroCuenta }}</td>
                     </tr>
                     <tr>
                         <th>Nombre</th>
-                        <td>{{$alumno['nombre']}}</td>
+                        <td>{{ $alumno->nombre }}</td>
                     </tr>
                     <tr>
                         <th>Apellido</th>
-                        <td>{{$alumno['apellido']}}</td>
+                        <td>{{ $alumno->apellido }}</td>
                     </tr>
                     <tr>
                         <th>Sexo</th>
-                        <td>{{$alumno['sexo']}}</td>
+                        @if ($alumno-> sexo)
+                        <td>Masculino</td>
+                        @else
+                        <td>Femenino</td>
+                        @endif
                     </tr>
                     <tr>
                         <th>Direccion</th>
-                        <td>{{$alumno['direccion']}}</td>
+                        <td>{{ $alumno->direccion }}</td>
                     </tr>
                     <tr>
                         <th>Correo</th>
-                        <td>{{$alumno['email']}}</td>
+                        <td>{{ $alumno->correo }}</td>
                     </tr>
                     <tr>
-                        <th>Carrera</th>
-                        <td>{{$alumno['carrera']}}</td>
+                       {{--  <th>Carrera</th>
+                        <td>{{$alumno['carrera']}}</td> --}}
                     </tr>
                 </tbody>
             </table>
@@ -72,7 +79,7 @@
         </div>
         <div class="col-md-5 text-center">
             <h2 class="mt-5 text-center">Foto de Perfil</h2>
-            <img src="{{ asset('img/beanhead.svg')}}" alt="fotoPerfil" class="img-fluid" style="margin-top: -8vh; max-width: 450px;">
+            <img src="{{ asset('images/' . $fotoName) }}" alt="fotoPerfil" class="img-fluid" style="margin-top: -8vh; max-width: 450px;">
         </div>
     </div>
 </div>

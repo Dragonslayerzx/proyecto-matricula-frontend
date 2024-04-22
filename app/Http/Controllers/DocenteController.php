@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use DateTime;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
@@ -46,23 +45,26 @@ class DocenteController extends Controller
         
             // Redirigimos a la vista correspondiente dependiendo de si es coordinador o no
             if ($esCoordinador) {
-                return redirect()->route('coordinador.home')->with('docente', $docente);
+                session()->put('docente', $docente);
+                return redirect()->route('coordinador.home');
             } else {
-                return redirect()->route('docente.home')->with('docente', $docente);
+                session()->put('docente', $docente);
+                return redirect()->route('docente.home');
             }
         }
         return redirect()->route('docente.login');
     }
 
     public function vistaPrincipalDocente(){
-        return view('docente');
+        $docente = session()->get('docente');
+        return view('docente', compact('docente'));
     }
 
     public function logout(){
         return redirect()->route('docente.login');
     }
 
-    public function verClases(){
+    public function verClases($idDocente){
         $clases = [
             ['nombre' => 'Calculo 2', 'codigo' => 'MM202', 'seccion' =>'1500', 'uv' => '5'], 
             ['nombre' => 'POO', 'codigo' => 'IS-410', 'seccion' =>'1600', 'uv' => '5'], 
@@ -70,7 +72,7 @@ class DocenteController extends Controller
         ];
 
         $client = new Client();
-        $endpointSeccionesDocente = 'http://localhost:8080/api/matricula/clases/secciones/123456789';
+        $endpointSeccionesDocente = 'http://localhost:8080/api/matricula/clases/secciones/'. $idDocente;
         $res = $client->get($endpointSeccionesDocente);
         $cardSeccion = json_decode($res->getBody());
 
@@ -134,7 +136,8 @@ class DocenteController extends Controller
 
     //Coordinador
     public function cordiHome(){
-        return view('coordinador');
+        $docente = session()->get('docente');
+        return view('coordinador', compact('docente'));
     }
 
     public function cordiPerfil(){
@@ -155,14 +158,20 @@ class DocenteController extends Controller
         return view('coordinadorHistorial');
     }
 
-    public function cordiClases(){
+    public function cordiClases($idDocente){
 
 
-        $clases = [
+        $clasesBeta = [
             ['nombre' => 'Calculo 2', 'codigo' => 'MM202', 'seccion' =>'1500', 'uv' => '5'], 
             ['nombre' => 'POO', 'codigo' => 'IS-410', 'seccion' =>'1600', 'uv' => '5'], 
             ['nombre' => 'Circuitos', 'codigo' => 'IS-311', 'seccion' =>'1700', 'uv' => '3'] 
         ];
+
+        $client = new Client();
+        $endpointSeccionesDocente = 'http://localhost:8080/api/matricula/clases/secciones/'. $idDocente;
+        $res = $client->get($endpointSeccionesDocente);
+        $clases = json_decode($res->getBody());
+
         return view('coordinadorClases', compact('clases'));
     }
 

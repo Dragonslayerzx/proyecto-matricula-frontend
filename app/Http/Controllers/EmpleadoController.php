@@ -170,11 +170,29 @@ class EmpleadoController extends Controller
         $anio = $req->input('anio');
         $periodo = $req->get('periodo');
         
-        $dateFrom = date('Y-m-d', strtotime($primerDia));
-        $dateTo = date('Y-m-d', strtotime($ultimoDia));
-        $hourFrom = date('H', strtotime($horaComienzo));
-        $hourTo = date('H', strtotime($horaFinal));
-        //TODO terminar esta logica para poder establecer fechas matriculas
+        $headers = ['Content-Type' => 'application/json'];
+        $bodyData = [
+            'fechaComienzo' => $primerDia,
+            'fechaFinal' => $ultimoDia,
+            'horaComienzo' => $horaComienzo,
+            'horaFinal' => $horaFinal,
+            'anio' => $anio,
+            'periodo' => $periodo
+        ];
+
+        $endpoint = 'http://localhost:8080/api/matricula/crear/nuevo';
+        $body = json_encode($bodyData);
+        $client = new Client();
+        $res = $client->post($endpoint, [
+            'headers' => $headers,
+            'body' => $body
+        ]);
+
+        if ($res) {
+            return redirect()->route('empleado.home');
+        } 
+        return redirect()->route('establecer.matricula');
+    
 
     }
 
@@ -184,6 +202,31 @@ class EmpleadoController extends Controller
 
     public function registrarEdificio() {
         return view('registroEdificio');
+    }
+
+    public function guardarEdificio(Request $req) {
+        $nombre = $req->input('nombreEdificio');
+        $numeroPisos = $req->input('numeroPisos');
+
+        $headers = ['Content-Type' => 'application/json'];
+        $bodyData = [
+            'nombre' => $nombre,
+            'numeroPisos' => $numeroPisos
+        ];
+
+        $body = json_encode($bodyData);
+        $registrarEdificioEndpoint = 'http://localhost:8080/api/edificio/crear';
+        $client = new Client();
+        $res = $client->post($registrarEdificioEndpoint, [
+            'headers' => $headers,
+            'body' => $body
+        ]);
+        
+        if (!$res->getStatusCode() == '200') {
+            return redirect()->route('empleado.home');
+        }
+        return redirect()->route('registrar.edificio');
+
     }
 
     public function registrarCarrera() {
@@ -215,7 +258,7 @@ class EmpleadoController extends Controller
             'body' => $body
         ]);
 
-        if (!$res) {
+        if ($res->getStatusCode() != 200) {
             return redirect()->route('empleado.home');
         }
 
@@ -223,10 +266,39 @@ class EmpleadoController extends Controller
     }
 
     public function registrarSalon() {
-
-        $edificios = ["b2", "1847"];
+        $client = new Client();
+        $getEdificiosEndpoint = 'http://localhost:8080/api/edificio/obtener/edificios';
+        $res = $client->get($getEdificiosEndpoint);
+        $edificios = json_decode($res->getBody());
 
         return view('registroSalon', compact('edificios'));
+    }
+
+
+    public function guardarSalon(Request $req) {
+        $nombreSalon = $req->input('nombreSalon');
+        $capacidad = $req->input('capacidadSalon');
+        $edificio = $req->get('edificio');
+
+        $headers = ['Content-Type' => 'application/json'];
+        $bodyData = [
+            'idEdificio' => $edificio,
+            'nombre' => $nombreSalon,
+            'capacidad' => $capacidad,
+            'observacion' => null
+        ];
+
+        $body = json_encode($bodyData);
+        $client = new Client();
+        $registrarSalonEndpoint = 'http://localhost:8080/api/salon/crear';
+        $res = $client->post($registrarSalonEndpoint, [
+            'headers' => $headers,
+            'body' => $body
+        ]);
+        if (!$res->getStatusCode() == '200')
+          return redirect()->route('empleado.home');
+
+        return redirect()->route('registrar.salon');
     }
 
     public function expedienteDocenteRevisar() {

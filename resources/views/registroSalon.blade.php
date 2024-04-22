@@ -31,7 +31,7 @@
       <h3>Registro de Salón</h3>
     </section>
     <section class="d-flex mb-3">
-      <form action="{{ route('expediente.mandar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
+      <form action="{{ route('salon.guardar') }}" method="post" class="d-flex flex-column justify-content-around p-8 form">
         @csrf
         @method('post')
         <div class="d-flex flex-column align-items-center justify-content-center my-2">
@@ -47,7 +47,7 @@
           <select class="form-select mb-5" name="edificio" id="edificio">
             <option selected>Edificio</option>
             @foreach ($edificios as $edificio)
-              <option value="{{ $edificio }}">{{ $edificio }}</option> 
+              <option value="{{ $edificio->idEdificio }}">{{ $edificio->nombre }}</option> 
             @endforeach
           </select>
           <div>
@@ -56,10 +56,12 @@
         </div>
         <div class="d-flex justify-content-center align-items-center">
           <button class="btn btn-primary me-3">Crear</button>
-          <button class="btn btn-danger">Eliminar</button>
         </div>
       </form> 
     </section>
+    <div class="mx-auto mb-5 d-flex justify-content-center">
+      <button class="btn btn-primary"><a class="me-3 text-white" href="{{ route('empleado.home') }}">Ir a HOME</a></button>
+    </div>
    <!-- <section class="ms-1">
       <img src="{{ asset('img/docente.png') }}" alt="autenticación logo">
     </section> -->

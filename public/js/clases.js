@@ -56,7 +56,7 @@ selectFormClases.addEventListener('change', () => {
     <div class="col col-lg-4">
       <div class="card mb-5 rounded"> 
         <div class="d-flex justify-content-center mt-2">
-          <img src="../img/clases.png" class="card-img-top w-50" alt="clases logo">
+          <img style="border-radius: 50%;" src="../img/clases.png" class="card-img-top w-50" alt="clases logo">
         </div>
         <div class="card-body d-flex flex-column align-items-center">
           <h3 class="card-title fw-light">${item.docente}</h3>
