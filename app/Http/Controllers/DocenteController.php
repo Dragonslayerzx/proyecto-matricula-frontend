@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use GuzzleHttp\Client;
 
 use DateTime;
 use Illuminate\Http\Request;
@@ -8,6 +9,37 @@ use Illuminate\Http\Request;
 class DocenteController extends Controller
 {
     public function docenteLogin() {
+        return view('docenteLogin');
+    }
+
+    public function verificarLoginDocente(Request $req) {
+        $clave = $req->input('clave');
+        $contrasena = $req->input('contrasena');
+
+        $headers = ['Content-Type' => 'application/json'];
+        $bodyData = [
+            'clave' => $clave,
+            'contrasena' => $contrasena
+        ];
+        $body = json_encode($bodyData);
+
+        $client = new Client();
+        $docenteLoginEndpoint = 'http://localhost:8080/api/matricula/docente/verificacion';
+        $res = $client->post($docenteLoginEndpoint, [
+            'headers' => $headers,
+            'body' => $body
+        ]);
+
+        // si el login es correcto se debe traer al docente para saber si es coordinador
+        if ($res) {
+            $docentePorClaveEndpoint = 'http://localhost:8080/api/matricula/docente/' . $clave;
+            $docenteRes = $client->get($docentePorClaveEndpoint);
+            $docente = json_decode($docenteRes->getBody());
+            if ($docente->coordinador)
+                return view('coordinador', compact('docente'));
+
+            return view('docente', compact('docente'));
+        }
         return view('docenteLogin');
     }
 

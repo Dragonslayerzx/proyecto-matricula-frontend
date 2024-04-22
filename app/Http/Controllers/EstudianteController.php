@@ -157,8 +157,8 @@ class EstudianteController extends Controller
         return redirect()->route('estudiante.login');
     }
 
-    public function estudiantePerfil() {
-        $alumno = [
+    public function estudiantePerfil($id) {
+        /* $alumno = [
             'cuenta' => '28372',
             'nombre' => 'Pam',
             'apellido' => 'Beesly',
@@ -166,7 +166,13 @@ class EstudianteController extends Controller
             'direccion' => 'La melgar',
             'email' => 'pamcasso@gmail.com',
             'carrera' => 'Administracion Aduanera', 
-           ];
+           ]; */
+
+        $client = new Client();
+        $alumnoEndpoint = 'http://localhost:8080/api/alumnos/' . $id;
+        $res = $client->get($alumnoEndpoint);
+        $alumno = json_decode($res->getBody());
+
         return view('estudiantePerfil', compact('alumno'));
     }
 
@@ -186,8 +192,12 @@ class EstudianteController extends Controller
         return view('estudianteHistorial');
     }
 
-    public function verPaginamatricula() {
-        $carreras = ["Ing.Sistemas", "ing.Civil", "Psicologia", "Medicina", "Finanzas"];
+    public function verPaginamatricula($id) {
+        $client = new Client();
+
+        $obtenerCarrerasEndpoint = 'http://localhost:8080/api/matricula/carreras/obtener';
+        $carreras = $client->get($obtenerCarrerasEndpoint);
+
         $clases = ['MM110', "POO", "MM201", "PS-314", "Resistencia de materiales", "Sentimientos I"];
         $docentes = [[
 
@@ -196,7 +206,6 @@ class EstudianteController extends Controller
             "codigo" => "001",
             "seccion" => "1700",
             "uv" => "4"
-            
             ],
             [
 
@@ -218,7 +227,10 @@ class EstudianteController extends Controller
             ]
         ];
 
-        return view('matricula', compact('carreras', 'clases', 'docentes'));
+        $alumnoEndpoint = 'http://localhost:8080/api/alumnos/' . $id;
+        $res = $client->get($alumnoEndpoint);
+        $alumno = json_decode($res->getBody());
+        return view('matricula', compact('carreras', 'clases', 'docentes', 'alumno'));
     }
 
 

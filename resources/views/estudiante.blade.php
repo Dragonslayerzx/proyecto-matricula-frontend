@@ -9,6 +9,12 @@
     <title>home</title>
 </head>
 <body class="page mx-auto">
+
+<?php 
+  if (null == $alumno) {
+    redirect()->route('estudiante.login');
+  }
+?>
 <!-- Barra de navegación -->
 <div class="mb-4">
     <head>
@@ -18,7 +24,7 @@
           <h3>Tuition<span class="text-orange">03</span></h3>
         </div>
         <div class="d-flex align-items-center">
-          <a class="fw-light me-3" href=" {{ route('estudiante.perfil')}} ">Perfil</a>
+          <a class="fw-light me-3" href=" {{ route('estudiante.perfil', $alumno->numeroCuenta)}} ">Perfil</a>
           <button class="btn btn-danger me-3" onclick="clearStorage()">
             <a class="text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
         </div>
@@ -56,7 +62,7 @@
         <div class="card-body text-center">
           <h5 class="card-title mt-3">Matrícula</h5>
           <p class="card-text mt-3">Matricula tus clases</p>
-          <a href="{{ route('estudiante.matricula') }}" class="btn btn-primary mt-3">Ir a Matricula</a>
+          <a href="{{ route('estudiante.matricula', $alumno->numeroCuenta ) }}" class="btn btn-primary mt-3">Ir a Matricula</a>
         </div>
       </div>
     </div>

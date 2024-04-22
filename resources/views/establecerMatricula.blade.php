@@ -40,9 +40,9 @@
         <label for="horaFinal">Seleccione última hora de acceso</label>
         <input class="form-control mb-3" type="time" id="horaFinal" name="horaFinal">
         <label for="anio">Año académico</label>
-        <input type="text" id="anio" class="form-control" placeholder="Año" name="anio">
+        <input type="text" id="anio" class="form-control mb-4" placeholder="Año" name="anio">
         <label for="periodo">Periodo académico</label>
-        <select name="periodo" id="periodo">
+        <select name="periodo" id="periodo" class="form-select mb-5">
           <option selected>Periodo</option>
           <option value="I">I periodo</option>
           <option value="II">II periodo</option>

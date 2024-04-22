@@ -17,7 +17,7 @@
         <h3>Tuition<span class="text-orange">03</span></h3>
       </div>
       <div class="d-flex align-items-center">
-        <a class="fw-light me-3" href=" {{ route('estudiante.perfil')}} ">Perfil</a>
+        <a class="fw-light me-3" href=" {{ route('estudiante.perfil', $alumno->numeroCuenta)}} ">Perfil</a>
         <button class="btn btn-danger" onclick="logOut()">
         <a class="me-3 text-white" href="{{ route('estudiante.logout') }}">Log out</a></button>
       </div>
